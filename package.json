@@ -1,0 +1,46 @@
+{
+  "name": "core-components",
+  "version": "0.1.0",
+  "description": "Core components using Material.io for design and the ReactJs Context API",
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "node-sass": "^4.9.4",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "2.0.5"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbsmith969/core-components.git"
+  },
+  "keywords": [
+    "material",
+    "io",
+    "core",
+    "components",
+    "react"
+  ],
+  "author": "Bruce Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbsmith969/core-components/issues"
+  },
+  "homepage": "https://github.com/jbsmith969/core-components#readme"
+}
