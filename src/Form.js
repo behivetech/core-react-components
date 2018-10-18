@@ -1,45 +1,54 @@
 // Vendor Libs
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-// Context 
-import {FormContext, formState} from './FormContext';
+const DEFAULT_CONTEXT = {
+	fieldErrors: {},
+	fieldValues: {},
+	setFieldError: () => null,
+	setFieldValue: () => null,
+};
+
+export const FormContext = React.createContext(DEFAULT_CONTEXT);
 
 export default class Form extends Component {
 	constructor(props) {
-	    super(props);
+		super(props);
 
 	    this.setFieldError = (fieldName, error) => {
-	        this.setState((state) => {
-	            return {
-	            	fields: {
-	            		...state.fields,
-	            		...{
-	            			[fieldName]: {...state.fields[fieldName], {error}}
-	            		}
-	            	}
-	            }
-	    	});
-	    };
+	    	if (fieldName && error) {
+		    	this.setState({
+		    		fieldErrors: {
+		    			...this.state.fieldErrors,
+		    			[fieldName]: error,
+		    		}
+		    	});
+	    	}
+	    }
 
 	    this.setFieldValue = (fieldName, value) => {
-	        this.setState((state) => {
-	            return {
-	            	fields: {
-	            		...state.fields,
-	            		...{
-	            			[fieldName]: {...state.fields[fieldName], {value}}
-	            		}
-	            	}
-	            }
-	    	});
-	    };
+	    	if (fieldName && value) {
+		        this.setState({
+		        	fieldValues: {
+		        		...this.state.fieldValues,
+		        		[fieldName]: value,
+		        	}
+		        });
+	    	}
+	    }
 
-	    this.state = {
-	        fields: formState.fields,
-	        setFieldError: this.setFieldError,
-	        setFieldValue: this.setFieldValue,
-	    };
+		this.state = {
+			...DEFAULT_CONTEXT,
+			...{
+				setFieldError: this.setFieldError,
+				setFieldValue: this.setFieldValue,
+			}
+		}
+	}
+
+	componentWillUpdate(nextProps, nextState) {
+		console.log(nextState)
 	}
 
 	render() {
@@ -56,5 +65,5 @@ export default class Form extends Component {
 Form.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
-	name: PropTypes.string,
-}
+	name: PropTypes.string.isRequired,
+};
