@@ -5,10 +5,18 @@ import classnames from 'classnames';
 
 // Components
 import {FormContext} from './Form';
-import TextField from './TextField';
 
 export default class FormField extends Component {
+    state = {componentImport: null}
     
+    componentWillMount() {
+        import(`./${this.props.componentName}`).then((component) => {
+            if (component && component.default) {
+                this.setState({componentImport: component.default});
+            }
+        });
+    }
+
     componentWillUnmount() {
         this.setFieldValueDebounced.cancel()
     }
@@ -25,9 +33,10 @@ export default class FormField extends Component {
     }
 
     renderChild = (formState) => {
-        const {className, component, name} = this.props;
+        const {className, name} = this.props;
+        const {componentImport} = this.state;
         let props = {
-            className: classnames('form-text-field', className),
+            className: classnames('form-field', className),
             onChange: this.handleChange,
         }
         let content = null;
@@ -38,10 +47,11 @@ export default class FormField extends Component {
             this.setFieldValueDebounced = formState.setFieldValueDebounced;
         } 
 
-        import(`./${component}`).then((Component) => {
-            console.log(Component)
+        if (componentImport) {
+            const Component = componentImport;
+            
             content = <Component {...this.props} {...props} value={this.value} />;
-        });
+        }
 
         return content;
     }
@@ -58,6 +68,6 @@ export default class FormField extends Component {
 FormField.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    component: PropTypes.oneOf(['TextField']).isRequired,
+    componentName: PropTypes.oneOf(['TextField']).isRequired,
     name: PropTypes.string.isRequired,
 };
