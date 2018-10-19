@@ -60,7 +60,19 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       },
     },
   ];
-  if (preProcessor) {
+  if (preProcessor === 'sass-loader') {
+    loaders.push(
+      {
+        loader: require.resolve('sass-loader'),
+        options: {
+          includePaths: [
+            path.resolve(__dirname, '../node_modules'),
+            path.join(__dirname, '**/node_modules/@material'),
+          ],
+        },
+      },
+    );
+  } else if (preProcessor) {
     loaders.push(require.resolve(preProcessor));
   }
   return loaders;
