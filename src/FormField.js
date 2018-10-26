@@ -2,13 +2,17 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import {difference, map, union} from 'lodash';
 
 // Components
 import {FormContext} from './Form';
 
 export default class FormField extends Component {
-    state = {componentImport: null}
-    
+    state = {
+        componentImport: null,
+        value: null,
+    }
+
     componentWillMount() {
         import(`./${this.props.componentName}`).then((component) => {
             if (component && component.default) {
@@ -17,18 +21,72 @@ export default class FormField extends Component {
         });
     }
 
-    componentWillUnmount() {
-        this.setFieldValueDebounced.cancel()
-    }
-    
-    handleChange = (event) => {
-        const {name, onClick} = this.props;
+    componentDidMount() {
+        const {validate} = this.props;
 
-        this.value = event.target.value;
-        this.setFieldValueDebounced(name, event.target.value);
-        
+        if (validate) {
+            this.setFieldValidators(this.stateName, validate);
+        }
+    }
+
+    componentWillReceiveProps({validate: nextValidate}) {
+        if (this.props.validate !== nextValidate) {
+            this.setFieldValidators(this.stateName, nextValidate);
+        }
+    }
+
+    shouldHandleClick() {
+        const {componentName} = this.props;
+
+        return (componentName === 'Checkbox' || componentName === 'Switch');
+    }
+
+    shouldHandleChange() {
+        const {componentName} = this.props;
+
+        return (componentName !== 'Checkbox' && componentName !== 'Switch');
+    }
+
+    handleClick = (event) => {
+        const {defaultValue, name, onClick} = this.props;
+        let returnValue;
+
+        if (this.shouldHandleClick()) {
+            if (name !== this.stateName) {
+                let formStateValue = this.getFieldValue(this.stateName);
+                formStateValue = (!formStateValue)
+                    ? [] : [...formStateValue];
+                returnValue = (event.target.checked)
+                    ? union(formStateValue, [defaultValue])
+                    : difference(formStateValue, [defaultValue]);
+            } else {
+                if (event.target.checked) {
+                    returnValue = defaultValue;
+                } else {
+                    returnValue = (defaultValue === true) ? false : '';
+                }
+            }
+
+            this.setState({value: returnValue});
+            this.setFieldValue(this.stateName, returnValue);
+        }
+
+
         if (onClick) {
             onClick(event);
+        }
+    }
+
+    handleChange = (event) => {
+        const {onChange} = this.props;
+
+        if (this.shouldHandleChange()) {
+            this.setState({value: event.target.value});
+            this.setFieldValueDebounced(this.stateName, event.target.value);
+        }
+
+        if (onChange) {
+            onChange(event);
         }
     }
 
@@ -38,19 +96,29 @@ export default class FormField extends Component {
         let props = {
             className: classnames('form-field', className),
             onChange: this.handleChange,
-        }
+            onClick: this.handleClick,
+        };
         let content = null;
 
-        this.value = formState.fieldValues[name] || '';
+        this.stateName = name.replace('[]', '');
 
-        if (!this.setFieldValueDebounced) {
-            this.setFieldValueDebounced = formState.setFieldValueDebounced;
-        } 
+        if (!this.setFieldValue) {
+
+            // formState comes from the FormContext in the Form.js file.
+            // Values passed into the context object of formState will be
+            // set to the 'this' object of this class.
+            map(formState, (value, key) => {
+                this[key] = value;
+            });
+        }
+
 
         if (componentImport) {
             const Component = componentImport;
-            
-            content = <Component {...this.props} {...props} value={this.value} />;
+
+            props.value = this.state.value || this.getFieldValue(this.stateName) || '';
+            props.error = this.getFieldError(this.stateName) || '';
+            content = <Component {...this.props} {...props} />;
         }
 
         return content;
@@ -68,6 +136,7 @@ export default class FormField extends Component {
 FormField.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    componentName: PropTypes.oneOf(['TextField']).isRequired,
+    componentName: PropTypes.oneOf(['Checkbox', 'Switch', 'TextField']).isRequired,
     name: PropTypes.string.isRequired,
+    validate: PropTypes.arrayOf(PropTypes.string, PropTypes.func),
 };

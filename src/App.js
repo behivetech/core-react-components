@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import FormField from './FormField';
 import Form from './Form';
 
@@ -8,9 +8,11 @@ export default class App extends Component {
             <section className="app">
                 <h1>Form Components</h1>
                 <Form name="mockName">
-                	<FormField name="mockFieldName1" label="Mock Field 1" helperText="test helper text 1" componentName="TextField" />
-                	<FormField name="mockFieldName2" label="Mock Field 2" helperText="test helper text 2" componentName="TextField" />
-            	</Form>
+                    <FormField name="field1" label="Field 1" componentName="TextField" helperText="test" validate={['required']} />
+                    <FormField defaultValue="value" name="field2" label="Field 2" componentName="Checkbox" helperText="test" />
+                    <FormField defaultValue="value" name="field3" label="Field 3" componentName="Switch" helperText="test" />
+                    <button type="submit">submit</button>
+                </Form>
             </section>
         );
     }

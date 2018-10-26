@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormField should render with the correct props 1`] = `"<FormField name=\\"mockName\\" componentName=\\"TextField\\" />"`;

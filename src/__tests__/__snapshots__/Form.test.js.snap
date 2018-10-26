@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form should render with the correct state and props 1`] = `
+"<Form className=\\"mock-class\\" name=\\"mockForm\\" fieldValues={{...}}>
+  <form className=\\"form mock-class\\" name=\\"mockForm\\" onSubmit={[Function]} />
+</Form>"
+`;
+
+exports[`Form should render with the correct state and props 2`] = `
+Object {
+  "getFieldError": [Function],
+  "getFieldValue": [Function],
+  "setFieldValidators": [Function],
+  "setFieldValue": [Function],
+  "setFieldValueDebounced": [Function],
+}
+`;
+
+exports[`Form should set a field error 1`] = `"This field cannot be empty"`;

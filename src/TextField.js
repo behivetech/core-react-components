@@ -1,9 +1,11 @@
+// Vendor Libs
 import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-// import mdcAutoInit from '@material/auto-init';
 import {MDCTextField} from '@material/textfield';
-import {MDCTextFieldHelperText} from '@material/textfield/helper-text';
+
+// Components
+import FormFieldHelperText from './FormFieldHelperText';
 
 // Styles
 import './TextField.scss';
@@ -12,12 +14,10 @@ export default class TextField extends Component {
     constructor(props) {
         super(props);
         this.textFieldRef = createRef();
-        this.textFieldHelperTextRef = createRef();
     }
 
     componentDidMount() {
         new MDCTextField(this.textFieldRef.current);
-        new MDCTextFieldHelperText(this.textFieldHelperTextRef.current);
     }
 
     handleKeyDown = (event) => {
@@ -29,39 +29,32 @@ export default class TextField extends Component {
         }
     }
 
-    getClass() {
-        const {className, disabled, fullWidth} = this.props;
+    getTextFieldClass() {
+        const {disabled, fullWidth} = this.props;
 
         return classnames({
-            'text-field': true,
             'mdc-text-field': true,
             'mdc-text-field--disabled': disabled,
             'mdc-text-field--fullwidth': fullWidth,
-        }, className);
-    }
-
-    getHelperTextClass() {
-        return classnames({
-            'mdc-text-field-helper-text': true,
-            'mdc-text-field-helper-text--persistent': true,
-            'mdc-text-field-helper-text--validation-msg': this.props.error,
-        })
+        });
     }
 
     render() {
         const {
-            disabled, 
-            helperText, 
-            label, 
-            inputProps, 
-            onClick, 
-            onChange, 
+            className,
+            disabled,
+            error,
+            helperText,
+            label,
+            inputProps,
+            onClick,
+            onChange,
             name,
             value,
         } = this.props;
         const inputCombinedProps = {
             ...inputProps,
-            ...{            
+            ...{
                 className: 'mdc-text-field__input',
                 disabled,
                 onKeyDown: this.handleKeyDown,
@@ -69,20 +62,18 @@ export default class TextField extends Component {
                 onChange,
                 onClick,
                 value,
-            },  
+            },
         };
 
         return (
-            <React.Fragment>
-                <div className={this.getClass()} ref={this.textFieldRef}>
-                    <input {...inputCombinedProps} /> 
+            <div className={classnames('text-field', className)}>
+                <div className={this.getTextFieldClass()} ref={this.textFieldRef}>
+                    <input {...inputCombinedProps} />
                     <label className="mdc-floating-label" htmlFor={name}>{label}</label>
-                    <div className="mdc-line-ripple"></div>
+                    <div className="mdc-line-ripple" />
                 </div>
-                <p className={this.getHelperTextClass()} aria-hidden="true" ref={this.textFieldHelperTextRef}>
-                    {helperText}
-                </p>
-            </React.Fragment>
+                <FormFieldHelperText error={error} helperText={helperText} />
+            </div>
         );
     }
 }
@@ -100,7 +91,7 @@ TextField.propTypes = {
     inputProps: PropTypes.objectOf(PropTypes.oneOfType([
         PropTypes.func,
         PropTypes.number,
-        PropTypes.string, 
+        PropTypes.string,
     ])),
     /** name prop for the input field */
     name: PropTypes.string,
@@ -113,4 +104,4 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
     helperText: '',
-}
+};

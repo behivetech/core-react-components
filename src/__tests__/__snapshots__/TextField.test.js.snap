@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField should render with the correct props 1`] = `
+"<div className=\\"text-field\\">
+  <div className=\\"mdc-text-field\\">
+    <input className=\\"mdc-text-field__input\\" disabled={[undefined]} onKeyDown={[Function]} name=\\"mockName\\" onChange={[undefined]} onClick={[undefined]} value={[undefined]} />
+    <label className=\\"mdc-floating-label\\" htmlFor=\\"mockName\\" />
+    <div className=\\"mdc-line-ripple\\" />
+  </div>
+  <FormFieldHelperText error={[undefined]} helperText=\\"\\" />
+</div>"
+`;

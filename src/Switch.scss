@@ -1,0 +1,12 @@
+@import "@material/switch/mdc-switch";
+
+.switch {
+    display: inline-block;
+    position: relative;
+    margin-left: 3px;
+    margin-right: 10px;
+
+    &--form-field {
+        margin-bottom: 11px;
+    }
+}
