@@ -6,6 +6,7 @@ import {
     compact,
     debounce,
     get,
+    isEmpty,
     isFunction,
     map,
     noop,
@@ -19,6 +20,7 @@ const DEFAULT_CONTEXT = {
     setFieldValidators: noop,
     setFieldValue: noop,
     setFieldValueDebounced: noop,
+    shouldDisable: noop,
 };
 
 export const FormContext = React.createContext(DEFAULT_CONTEXT);
@@ -61,6 +63,10 @@ export default class Form extends Component {
             }
         };
 
+        this.shouldDisable = () => {
+            return (this.state.submitting);
+        };
+
         this.setFieldValueDebounced = debounce(this.setFieldValue, 200, {trailing: true});
 
         this.state = {
@@ -70,11 +76,13 @@ export default class Form extends Component {
                 setFieldValidators: this.setFieldValidators,
                 setFieldValue: this.setFieldValue,
                 setFieldValueDebounced: this.setFieldValueDebounced,
+                shouldDisable: this.shouldDisable,
             },
             fieldErrors: {},
             fieldValues: {},
             fieldValidators: {},
             initialSubmit: false,
+            submitting: false,
         };
     }
 
@@ -86,8 +94,33 @@ export default class Form extends Component {
         }
     }
 
+    componentWillReceiveProps({submitted: nextSubmitted}) {
+        if (this.props.submitted && !nextSubmitted) {
+            this.setState({submitting: false});
+            // Do something once form has been submitted
+        }
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        const {submitting} = this.state;
+        const {submitting: nextSubmitting} = nextState;
+        const {onSubmit: nextOnSubmit} = nextProps;
+
+        if (!submitting && nextSubmitting, !this.hasErrors(nextProps, nextState)) {
+            nextOnSubmit();
+        }
+    }
+
     setFieldError(fieldName, error) {
-        if (fieldName && error) {
+        const currentFieldError = this.state.fieldErrors[fieldName];
+
+        if (
+            fieldName &&
+            (
+                (error && error !== currentFieldError) ||
+                (!error && currentFieldError)
+            )
+        ) {
             this.setState({
                 fieldErrors: {
                     ...this.state.fieldErrors,
@@ -119,8 +152,7 @@ export default class Form extends Component {
                     if (importedValidator && isFunction(importedValidator)) {
                         fieldError = importedValidator(fieldValue, fieldValues);
                     } else {
-                        fieldError = `${validator} is not a valid validator. Please pass a function or `;
-                        fieldError += `insure you are using the correct name for the validator.`;
+                        fieldError = `${validator} is not a valid validator.`;
                     }
                 }
 
@@ -129,14 +161,17 @@ export default class Form extends Component {
 
         }
 
-        if(fieldError) {
-            this.setFieldError(fieldName, fieldError);
-        }
+
+        this.setFieldError(fieldName, fieldError);
+    }
+
+    hasErrors(props = this.props, state = this.state) {
+        return (isEmpty(state.fieldErrors) && !props.formError);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({initialSubmit: true});
+        this.setState({initialSubmit: true, submitting: true});
     }
 
     render() {
@@ -153,12 +188,41 @@ export default class Form extends Component {
 }
 
 Form.propTypes = {
+    /** The children to go in the form */
     children: PropTypes.node,
+    /** Used to add attitional styling from parent component */
     className: PropTypes.string,
+    /** Any form type errors to help with it submitting and showing errors */
+    formError: PropTypes.bool,
+    /**
+        Values to populate the fields going by the same name you use
+        as the name prop for the field and using the FormField component
+    */
     fieldValues: PropTypes.objectOf(PropTypes.oneOfType([
         PropTypes.array,
         PropTypes.number,
         PropTypes.string,
     ])),
+    /**
+        Standard name you would give a form using html. Helps with react refs.
+        It's ideal to keep these names unique per what's displayed on the current
+        page because of the potential refs created.
+        (refs are coming from a FormRefProvider component to have the ability to
+        submit the form outside of the form).
+    */
+    // TODO: need to figure out the ref thing and disabling components that would
+    // potentially submit this form from outside of the form. Probably pass the
+    // values down through the value argument in the provider and callback functions.
     name: PropTypes.string.isRequired,
+    /**
+        Functionality to run when this Form component meets all requirements
+        such as passsing validation tests.
+    */
+    onSubmit: PropTypes.func,
+    /** Indicates if the form was submitted and a response came back */
+    submitted: PropTypes.bool,
+};
+
+Form.defaultProps = {
+    onSubmit: noop,
 };

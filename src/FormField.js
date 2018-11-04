@@ -116,8 +116,9 @@ export default class FormField extends Component {
         if (componentImport) {
             const Component = componentImport;
 
-            props.value = this.state.value || this.getFieldValue(this.stateName) || '';
             props.error = this.getFieldError(this.stateName) || '';
+            props.value = this.state.value || this.getFieldValue(this.stateName) || '';
+            props.disabled = this.shouldDisable() || this.props.disabled;
             content = <Component {...this.props} {...props} />;
         }
 
@@ -134,9 +135,40 @@ export default class FormField extends Component {
 }
 
 FormField.propTypes = {
-    children: PropTypes.node,
+    /** Used to add attitional styling from parent component */
     className: PropTypes.string,
+    /**
+        Name of an existing component in the prop types. This will render
+        whichever component you decide to import dynamically by choosing the name
+        of an existing component designed for the FormField component.
+    */
     componentName: PropTypes.oneOf(['Checkbox', 'Switch', 'TextField']).isRequired,
+    /**
+        If the component handles disabled props, this should disable the field
+        like it would normally by passing the disable prop the HTML DOM element
+        if supported such as input or select. These are supported by the components
+        supplied through component name. If true, this will override the disabled
+        state coming from the Form component.
+    */
+    disabled: PropTypes.bool,
+    /**
+        Standard name you would use for a form element. Should be unique from all
+        other children form fields within the Form component unless it ends with a [].
+        Currently this is used for checkbox and will create an array of values based on
+        what checkboxes are checked for this name. For instance, if you had three checkboxes
+        with the name "MyField[]", the values for MyField would end up to be an array of
+        values based on the defaultValue of the checkbox and if they are checked.
+    */
     name: PropTypes.string.isRequired,
+    /**
+        This is an array of validators for the field. If they don't pass, you will see an
+        error passed through the helperText prop passed down from the Form component.
+        See validator.js in lib-app for the already supplied standard validation functions.
+        You can optionally pass a function instead of a string for your own type of custome
+        validations. If you pass a function, the arguments recieved for that function are the
+        value and the values of other fields. See validator.js in lib-app to see the format.
+        The 2nd argument passes the other form fields in case you want to validate this particular
+        field based on the value of another field(s).
+    */
     validate: PropTypes.arrayOf(PropTypes.string, PropTypes.func),
 };
