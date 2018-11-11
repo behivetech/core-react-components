@@ -60,7 +60,7 @@
         "test": "export default NODE_ENV=test; node scripts/test.js",
         "styleguidist": "npx styleguidist server",
         "styleguidist:build": "npx styleguidist build",
-        "styleguidist:deploy": "npm run styleguidist:build; sleep 5; git subtree push --prefix styleguide origin gh-pages"
+        "styleguidist:deploy": "git checkout gh-pages; npm run styleguidist:build; sleep 5; git subtree push --prefix styleguide origin gh-pages; git checkout master"
     },
     "eslintConfig": {
         "extends": "react-app"
