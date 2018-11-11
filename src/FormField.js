@@ -23,7 +23,7 @@ export default class FormField extends Component {
 
     componentDidMount() {
         const {validate} = this.props;
-
+        
         if (validate) {
             this.setFieldValidators(this.stateName, validate);
         }
@@ -170,5 +170,5 @@ FormField.propTypes = {
         The 2nd argument passes the other form fields in case you want to validate this particular
         field based on the value of another field(s).
     */
-    validate: PropTypes.arrayOf(PropTypes.string, PropTypes.func),
+    validate: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.func])),
 };

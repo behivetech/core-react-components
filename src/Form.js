@@ -95,7 +95,7 @@ export default class Form extends Component {
     }
 
     componentWillReceiveProps({submitted: nextSubmitted}) {
-        if (this.props.submitted && !nextSubmitted) {
+        if (!this.props.submitted && nextSubmitted) {
             this.setState({submitting: false});
             // Do something once form has been submitted
         }
@@ -104,10 +104,15 @@ export default class Form extends Component {
     componentWillUpdate(nextProps, nextState) {
         const {submitting} = this.state;
         const {submitting: nextSubmitting} = nextState;
-        const {onSubmit: nextOnSubmit} = nextProps;
+        const {onSubmit: nextOnSubmit, submitted: nextSubmitted} = nextProps;
 
-        if (!submitting && nextSubmitting, !this.hasErrors(nextProps, nextState)) {
+        if (
+            !submitting && 
+            nextSubmitting && 
+            !this.hasErrors(nextProps, nextState)
+        ) {
             nextOnSubmit();
+            this.setState({initialSubmit: false})
         }
     }
 
@@ -161,12 +166,11 @@ export default class Form extends Component {
 
         }
 
-
         this.setFieldError(fieldName, fieldError);
     }
 
     hasErrors(props = this.props, state = this.state) {
-        return (isEmpty(state.fieldErrors) && !props.formError);
+        return (!isEmpty(state.fieldErrors) || !!props.formError);
     }
 
     handleSubmit = (event) => {
@@ -193,7 +197,7 @@ Form.propTypes = {
     /** Used to add attitional styling from parent component */
     className: PropTypes.string,
     /** Any form type errors to help with it submitting and showing errors */
-    formError: PropTypes.bool,
+    formError: PropTypes.string,
     /**
         Values to populate the fields going by the same name you use
         as the name prop for the field and using the FormField component

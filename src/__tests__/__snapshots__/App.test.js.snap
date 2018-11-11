@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render with the correct props 1`] = `
+"<section className=\\"app\\">
+  <h1>
+    Form Components
+  </h1>
+  <Form name=\\"mockName\\" onSubmit={[Function: noop]}>
+    <FormField name=\\"field1\\" label=\\"Field 1\\" componentName=\\"TextField\\" helperText=\\"test\\" validate={{...}} />
+    <FormField defaultValue=\\"value\\" name=\\"field2\\" label=\\"Field 2\\" componentName=\\"Checkbox\\" helperText=\\"test\\" />
+    <FormField defaultValue=\\"value\\" name=\\"field3\\" label=\\"Field 3\\" componentName=\\"Switch\\" helperText=\\"test\\" />
+    <button type=\\"submit\\">
+      submit
+    </button>
+  </Form>
+</section>"
+`;

@@ -1,0 +1,705 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render as disabled 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Checkbox
+    checked={true}
+    defaultValue="mock value"
+    name="mockName"
+    onChange={[Function]}
+    onClick={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="mdc-form-field"
+        >
+          <div
+            className="mdc-checkbox"
+          >
+            <input
+              checked={true}
+              className="mdc-checkbox--input mdc-checkbox__native-control"
+              id="mockName"
+              name="mockName"
+              onChange={[Function]}
+              onClick={[Function]}
+              readOnly={true}
+              type="checkbox"
+              value="mock value"
+            />
+            <div
+              className="mdc-checkbox__background"
+            >
+              <svg
+                className="mdc-checkbox__checkmark"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  className="mdc-checkbox__checkmark-path"
+                  d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                  fill="none"
+                />
+              </svg>
+              <div
+                className="mdc-checkbox__mixedmark"
+              />
+            </div>
+          </div>
+          <label
+            className="checkbox--label mdc-checkbox--label"
+            htmlFor="mockName"
+          />
+        </div>,
+        <FormFieldHelperText
+          className="checkbox--helper"
+          helperText=""
+          style={
+            Object {
+              "marginLeft": "10px",
+            }
+          }
+        />,
+      ],
+      "className": "checkbox",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="mdc-checkbox"
+            >
+              <input
+                checked={true}
+                className="mdc-checkbox--input mdc-checkbox__native-control"
+                id="mockName"
+                name="mockName"
+                onChange={[Function]}
+                onClick={[Function]}
+                readOnly={true}
+                type="checkbox"
+                value="mock value"
+              />
+              <div
+                className="mdc-checkbox__background"
+              >
+                <svg
+                  className="mdc-checkbox__checkmark"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    className="mdc-checkbox__checkmark-path"
+                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                    fill="none"
+                  />
+                </svg>
+                <div
+                  className="mdc-checkbox__mixedmark"
+                />
+              </div>
+            </div>,
+            <label
+              className="checkbox--label mdc-checkbox--label"
+              htmlFor="mockName"
+            />,
+          ],
+          "className": "mdc-form-field",
+        },
+        "ref": Object {
+          "current": null,
+        },
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <input
+                  checked={true}
+                  className="mdc-checkbox--input mdc-checkbox__native-control"
+                  id="mockName"
+                  name="mockName"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  readOnly={true}
+                  type="checkbox"
+                  value="mock value"
+                />,
+                <div
+                  className="mdc-checkbox__background"
+                >
+                  <svg
+                    className="mdc-checkbox__checkmark"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      className="mdc-checkbox__checkmark-path"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                      fill="none"
+                    />
+                  </svg>
+                  <div
+                    className="mdc-checkbox__mixedmark"
+                  />
+                </div>,
+              ],
+              "className": "mdc-checkbox",
+            },
+            "ref": Object {
+              "current": null,
+            },
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "checked": true,
+                  "className": "mdc-checkbox--input mdc-checkbox__native-control",
+                  "disabled": undefined,
+                  "id": "mockName",
+                  "name": "mockName",
+                  "onChange": [Function],
+                  "onClick": [Function],
+                  "readOnly": true,
+                  "style": undefined,
+                  "type": "checkbox",
+                  "value": "mock value",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "input",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <svg
+                      className="mdc-checkbox__checkmark"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        className="mdc-checkbox__checkmark-path"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                        fill="none"
+                      />
+                    </svg>,
+                    <div
+                      className="mdc-checkbox__mixedmark"
+                    />,
+                  ],
+                  "className": "mdc-checkbox__background",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <path
+                        className="mdc-checkbox__checkmark-path"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                        fill="none"
+                      />,
+                      "className": "mdc-checkbox__checkmark",
+                      "viewBox": "0 0 24 24",
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "mdc-checkbox__checkmark-path",
+                        "d": "M1.73,12.91 8.1,19.28 22.79,4.59",
+                        "fill": "none",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "path",
+                    },
+                    "type": "svg",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "mdc-checkbox__mixedmark",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "checkbox--label mdc-checkbox--label",
+              "htmlFor": "mockName",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "label",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "className": "checkbox--helper",
+          "error": undefined,
+          "helperText": "",
+          "style": Object {
+            "marginLeft": "10px",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="mdc-form-field"
+          >
+            <div
+              className="mdc-checkbox"
+            >
+              <input
+                checked={true}
+                className="mdc-checkbox--input mdc-checkbox__native-control"
+                id="mockName"
+                name="mockName"
+                onChange={[Function]}
+                onClick={[Function]}
+                readOnly={true}
+                type="checkbox"
+                value="mock value"
+              />
+              <div
+                className="mdc-checkbox__background"
+              >
+                <svg
+                  className="mdc-checkbox__checkmark"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    className="mdc-checkbox__checkmark-path"
+                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                    fill="none"
+                  />
+                </svg>
+                <div
+                  className="mdc-checkbox__mixedmark"
+                />
+              </div>
+            </div>
+            <label
+              className="checkbox--label mdc-checkbox--label"
+              htmlFor="mockName"
+            />
+          </div>,
+          <FormFieldHelperText
+            className="checkbox--helper"
+            helperText=""
+            style={
+              Object {
+                "marginLeft": "10px",
+              }
+            }
+          />,
+        ],
+        "className": "checkbox",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="mdc-checkbox"
+              >
+                <input
+                  checked={true}
+                  className="mdc-checkbox--input mdc-checkbox__native-control"
+                  id="mockName"
+                  name="mockName"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  readOnly={true}
+                  type="checkbox"
+                  value="mock value"
+                />
+                <div
+                  className="mdc-checkbox__background"
+                >
+                  <svg
+                    className="mdc-checkbox__checkmark"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      className="mdc-checkbox__checkmark-path"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                      fill="none"
+                    />
+                  </svg>
+                  <div
+                    className="mdc-checkbox__mixedmark"
+                  />
+                </div>
+              </div>,
+              <label
+                className="checkbox--label mdc-checkbox--label"
+                htmlFor="mockName"
+              />,
+            ],
+            "className": "mdc-form-field",
+          },
+          "ref": Object {
+            "current": null,
+          },
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <input
+                    checked={true}
+                    className="mdc-checkbox--input mdc-checkbox__native-control"
+                    id="mockName"
+                    name="mockName"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    readOnly={true}
+                    type="checkbox"
+                    value="mock value"
+                  />,
+                  <div
+                    className="mdc-checkbox__background"
+                  >
+                    <svg
+                      className="mdc-checkbox__checkmark"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        className="mdc-checkbox__checkmark-path"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                        fill="none"
+                      />
+                    </svg>
+                    <div
+                      className="mdc-checkbox__mixedmark"
+                    />
+                  </div>,
+                ],
+                "className": "mdc-checkbox",
+              },
+              "ref": Object {
+                "current": null,
+              },
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "checked": true,
+                    "className": "mdc-checkbox--input mdc-checkbox__native-control",
+                    "disabled": undefined,
+                    "id": "mockName",
+                    "name": "mockName",
+                    "onChange": [Function],
+                    "onClick": [Function],
+                    "readOnly": true,
+                    "style": undefined,
+                    "type": "checkbox",
+                    "value": "mock value",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <svg
+                        className="mdc-checkbox__checkmark"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          className="mdc-checkbox__checkmark-path"
+                          d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                          fill="none"
+                        />
+                      </svg>,
+                      <div
+                        className="mdc-checkbox__mixedmark"
+                      />,
+                    ],
+                    "className": "mdc-checkbox__background",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": <path
+                          className="mdc-checkbox__checkmark-path"
+                          d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                          fill="none"
+                        />,
+                        "className": "mdc-checkbox__checkmark",
+                        "viewBox": "0 0 24 24",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "className": "mdc-checkbox__checkmark-path",
+                          "d": "M1.73,12.91 8.1,19.28 22.79,4.59",
+                          "fill": "none",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": "path",
+                      },
+                      "type": "svg",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "mdc-checkbox__mixedmark",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "checkbox--label mdc-checkbox--label",
+                "htmlFor": "mockName",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "label",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "className": "checkbox--helper",
+            "error": undefined,
+            "helperText": "",
+            "style": Object {
+              "marginLeft": "10px",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Checkbox should render correctly with the prop checked 1`] = `
+"<div className=\\"checkbox\\">
+  <div className=\\"mdc-form-field\\">
+    <div className=\\"mdc-checkbox\\">
+      <input checked={true} disabled={[undefined]} id=\\"mockName\\" name=\\"mockName\\" onChange={[Function]} onClick={[Function]} readOnly={true} style={[undefined]} type=\\"checkbox\\" value=\\"mock value\\" className=\\"mdc-checkbox--input mdc-checkbox__native-control\\" />
+      <div className=\\"mdc-checkbox__background\\">
+        <svg className=\\"mdc-checkbox__checkmark\\" viewBox=\\"0 0 24 24\\">
+          <path className=\\"mdc-checkbox__checkmark-path\\" fill=\\"none\\" d=\\"M1.73,12.91 8.1,19.28 22.79,4.59\\" />
+        </svg>
+        <div className=\\"mdc-checkbox__mixedmark\\" />
+      </div>
+    </div>
+    <label className=\\"checkbox--label mdc-checkbox--label\\" htmlFor=\\"mockName\\" />
+  </div>
+  <FormFieldHelperText className=\\"checkbox--helper\\" error={[undefined]} helperText=\\"\\" style={{...}} />
+</div>"
+`;
+
+exports[`Checkbox should render with the correct props 1`] = `
+"<div className=\\"checkbox mock-class\\">
+  <div className=\\"mdc-form-field\\">
+    <div className=\\"mdc-checkbox\\">
+      <input checked={false} disabled={[undefined]} id=\\"mockName\\" name=\\"mockName\\" onChange={[Function]} onClick={[Function]} readOnly={true} style={[undefined]} type=\\"checkbox\\" value=\\"mock value\\" className=\\"mdc-checkbox--input mdc-checkbox__native-control\\" />
+      <div className=\\"mdc-checkbox__background\\">
+        <svg className=\\"mdc-checkbox__checkmark\\" viewBox=\\"0 0 24 24\\">
+          <path className=\\"mdc-checkbox__checkmark-path\\" fill=\\"none\\" d=\\"M1.73,12.91 8.1,19.28 22.79,4.59\\" />
+        </svg>
+        <div className=\\"mdc-checkbox__mixedmark\\" />
+      </div>
+    </div>
+    <label className=\\"checkbox--label mdc-checkbox--label\\" htmlFor=\\"mockName\\" />
+  </div>
+  <FormFieldHelperText className=\\"checkbox--helper\\" error={[undefined]} helperText=\\"\\" style={{...}} />
+</div>"
+`;
+
+exports[`Checkbox should set refs for the component 1`] = `
+Object {
+  "current": <div
+    class="mdc-checkbox"
+  >
+    <input
+      class="mdc-checkbox--input mdc-checkbox__native-control"
+      id="mockName"
+      name="mockName"
+      readonly=""
+      type="checkbox"
+      value="mock value"
+    />
+    <div
+      class="mdc-checkbox__background"
+    >
+      <svg
+        class="mdc-checkbox__checkmark"
+        viewBox="0 0 24 24"
+      >
+        <path
+          class="mdc-checkbox__checkmark-path"
+          d="M1.73,12.91 8.1,19.28 22.79,4.59"
+          fill="none"
+        />
+      </svg>
+      <div
+        class="mdc-checkbox__mixedmark"
+      />
+    </div>
+  </div>,
+}
+`;
+
+exports[`Checkbox should set refs for the component 2`] = `
+Object {
+  "current": <div
+    class="mdc-form-field"
+  >
+    <div
+      class="mdc-checkbox"
+    >
+      <input
+        class="mdc-checkbox--input mdc-checkbox__native-control"
+        id="mockName"
+        name="mockName"
+        readonly=""
+        type="checkbox"
+        value="mock value"
+      />
+      <div
+        class="mdc-checkbox__background"
+      >
+        <svg
+          class="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            class="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          class="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+    <label
+      class="checkbox--label mdc-checkbox--label"
+      for="mockName"
+    />
+  </div>,
+}
+`;

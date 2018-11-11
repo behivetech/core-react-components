@@ -8,8 +8,7 @@ karma_test_results
 .repository
 
 # Build files
-*/node/node
-portal-backend/src/main/resources
+styleguide
 
 # Logs
 logs
@@ -59,6 +58,3 @@ dist
 *.settings/*
 # Mac files
 .DS_Store
-
-# temp files not intended to go in repo
-temp-services-config.js

@@ -24,8 +24,9 @@ export default class TextField extends Component {
         event.stopPropagation();
 
         const {onKeyDown} = this.props;
+
         if (onKeyDown) {
-            onKeyDown();
+            onKeyDown(event);
         }
     }
 

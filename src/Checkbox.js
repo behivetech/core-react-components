@@ -16,8 +16,11 @@ export default class Checkbox extends Component {
     constructor(props) {
         super(props);
 
-        this.checkboxRef = createRef();
-        this.formFieldRef = createRef();
+        if (!this.props.renderComponent) {
+            this.checkboxRef = createRef();
+            this.formFieldRef = createRef();
+        }
+
         this.state = {checked: props.checked || false};
     }
 
@@ -40,7 +43,12 @@ export default class Checkbox extends Component {
         // It's unadvised to use handleChange because IE doesn't aways kick this off.
         // It's best to use onClick.
         event.stopPropagation();
-        this.props.onChange(event);
+
+        const {onChange} = this.props;
+
+        if (onChange) {
+            onChange(event);
+        }
     }
 
     handleClick = (event) => {
