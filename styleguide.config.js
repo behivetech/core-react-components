@@ -28,6 +28,7 @@ module.exports = {
             name: 'Core Components',
             components: () => [
                 './src/TextField.js',
+                './src/Checkbox.js',
             ],
             styles: {
                 StyleGuide: {
