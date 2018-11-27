@@ -8,6 +8,7 @@
         "@material/auto-init": "^0.39.0",
         "@material/checkbox": "^0.40.1",
         "@material/form-field": "^0.40.1",
+        "@material/react-switch": "^0.7.0",
         "@material/switch": "^0.40.1",
         "@material/textfield": "^0.40.1",
         "@svgr/webpack": "2.4.1",
