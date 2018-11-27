@@ -4,7 +4,6 @@ import {
     isDecimal,
     isEmail,
     isNumeric,
-    isURL,
 } from 'validator';
 
 export function required(value) {

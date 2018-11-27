@@ -188,7 +188,7 @@ describe('FormField', () => {
         const wrapperProps = {
             name: 'mockName',
             componentName: 'TextField',
-            validate: [() => null]
+            validate: [() => null],
         };
         const wrapper = mount(<FormField {...wrapperProps} />);
         const wrapperInstance = wrapper.instance();

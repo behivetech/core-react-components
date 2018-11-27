@@ -2,59 +2,45 @@
 import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {noop} from 'lodash';
 import {MDCCheckbox} from '@material/checkbox';
 import {MDCFormField} from '@material/form-field';
 
 // Components
 import FormFieldHelperText from './FormFieldHelperText';
 
-// Styles
 import './Checkbox.scss';
 
 export default class Checkbox extends Component {
     constructor(props) {
         super(props);
-
-        if (!this.props.renderComponent) {
-            this.checkboxRef = createRef();
-            this.formFieldRef = createRef();
-        }
-
-        this.state = {checked: props.checked || false};
+        this.checkboxRef = createRef();
+        this.formFieldRef = createRef();
+        this.state = {
+            checked: props.checked,
+            indeterminate: false,
+        };
     }
 
     componentDidMount() {
-        if (!this.props.renderComponent) {
-            const checkbox = new MDCCheckbox(this.checkboxRef.current);
-            const formField = new MDCFormField(this.formFieldRef.current);
+        const checkbox = new MDCCheckbox(this.checkboxRef.current);
+        const formField = new MDCFormField(this.formFieldRef.current);
 
-            formField.input = checkbox;
-        }
+        formField.input = checkbox;
     }
 
-    componentWillReceiveProps({checked}) {
-        if (this.props.checked !== checked) {
-            this.setState({checked});
+    componentWillReceiveProps({checked: nextChecked}) {
+        if (this.state.checked !== nextChecked) {
+            this.setState({checked: nextChecked});    
         }
     }
 
     handleChange = (event) => {
-        // It's unadvised to use handleChange because IE doesn't aways kick this off.
-        // It's best to use onClick.
         event.stopPropagation();
-
-        const {onChange} = this.props;
-
-        if (onChange) {
-            onChange(event);
-        }
-    }
-
-    handleClick = (event) => {
-        event.stopPropagation();
-        this.setState({checked: event.target.checked || false});
-        this.props.onClick(event);
+        this.setState({
+            checked: event.target.checked,
+            indeterminate: event.target.indeterminate,
+        });
+        this.props.onChange(event);
     }
 
     getCheckboxClass() {
@@ -64,98 +50,79 @@ export default class Checkbox extends Component {
         });
     }
 
-    getInputProps = () => {
-        const {disabled, name, style} = this.props;
-
-        return {
-            checked: this.state.checked,
-            disabled,
-            id: name,
-            name: name,
-            onChange: this.handleChange,
-            onClick: this.handleClick,
-            readOnly: true,
-            style,
-            type: 'checkbox',
-            value: this.props.defaultValue,
-        };
-    }
-
     render() {
         const {
-            className,
+            className, 
+            disabled, 
             error,
             helperText,
-            label,
-            name,
-            renderComponent,
+            id, 
+            label, 
+            name, 
         } = this.props;
 
-        return (renderComponent)
-            ? renderComponent(
-                this.handleClick,
-                {...this.props, ...this.getInputProps()},
-                this.state
-            )
-            : (
-                <div className={classnames('checkbox', className)}>
-                    <div className="mdc-form-field" ref={this.formFieldRef}>
-                        <div className={this.getCheckboxClass()} ref={this.checkboxRef}>
-                            <input
-                                {...this.getInputProps()}
-                                className="mdc-checkbox--input mdc-checkbox__native-control"
-                            />
-                            <div className="mdc-checkbox__background">
-                                <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                                    <path
-                                        className="mdc-checkbox__checkmark-path"
-                                        fill="none"
-                                        d="M1.73,12.91 8.1,19.28 22.79,4.59"
-                                    />
-                                    </svg>
-                                <div className="mdc-checkbox__mixedmark" />
-                            </div>
+        return (
+            <div className={classnames('checkbox', className)}>
+                <div className="mdc-form-field" ref={this.formFieldRef}>
+                    <div className={this.getCheckboxClass()} ref={this.checkboxRef}>
+                        <input 
+                            type="checkbox"
+                            className="mdc-checkbox__native-control"
+                            disabled={disabled}
+                            id={id || name}
+                        />
+                        <div className="mdc-checkbox__background">
+                            <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                <path className="mdc-checkbox__checkmark-path"
+                                    fill="none"
+                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                                />
+                            </svg>
+                            <div className="mdc-checkbox__mixedmark" />
                         </div>
-                        <label className="checkbox--label mdc-checkbox--label" htmlFor={name}>{label}</label>
                     </div>
-                    <FormFieldHelperText
-                        className="checkbox--helper"
-                        error={error}
-                        helperText={helperText}
-                        style={{marginLeft: '10px'}}
-                    />
-                </div>
-            );
+                    {
+                        (label)
+                            ? <label htmlFor={id || name}>{label}</label>
+                            : null
+                    }
+                </div>   
+                <FormFieldHelperText error={error} helperText={helperText} />
+            </div>     
+        );
     }
 }
 
 Checkbox.propTypes = {
+    /** ability to add additional className to the component for addistional styling from parent */
     className: PropTypes.string,
+    /** Controls the if the checkbox is checked or not */
     checked: PropTypes.bool,
-    /** The actual value of the checkbox. If not set, defaults to true */
-    defaultValue: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.number,
-        PropTypes.string,
-    ]).isRequired,
+    /** sets the state of the checkbox to disabled */
     disabled: PropTypes.bool,
+    /** Error to be displayed for this field */
+    error: PropTypes.string,
+    /** Helper text to be displayed for this field */
+    helperText: PropTypes.string,
+    /** The id attribute for the input of the checkbox */
+    id: PropTypes.string,
+    /** Additional props to be added to the input element */
+    inputProps: PropTypes.object,
+    /** the label to be shown with the checkbox */
     label: PropTypes.string,
+    /** The name attribute for the input of the checkbox */
     name: PropTypes.string,
-    onClick: PropTypes.func,
-    onChange: PropTypes.func,
-    /**
-        Function to give the ability to render different content for the checkbox.
-        hanldeClick, props and state are passed in as arguments of the function.
-        Primary example can be seen with MdcSwitch.
+    /** 
+        Callback function for when the checkbox changes. It's recommended to use 
+        onClick for the changing event since IE doesn't play well with onChange 
     */
-    renderComponent: PropTypes.func,
-    style: PropTypes.object,
-    value: PropTypes.oneOfType(
-        [PropTypes.arrayOf(PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.number,
-            PropTypes.string,
-        ])),
+    onChange: PropTypes.func,
+    /** 
+        The values to be compared with the default value with will check or umncheck 
+        the checkbox. If it's an array, this will compare to see if the defaultValue exists 
+        in the checkbox. 
+    */
+    value: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.number,
         PropTypes.string,
@@ -163,6 +130,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-    onClick: noop,
-    onChange: noop,
+    checked: false,
+    onChange: () => null,
+    value: true,
 };

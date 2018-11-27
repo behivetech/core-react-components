@@ -3,12 +3,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
-    compact,
     debounce,
-    get,
     isEmpty,
     isFunction,
-    map,
     noop,
     transform,
 } from 'lodash';
@@ -104,7 +101,7 @@ export default class Form extends Component {
     componentWillUpdate(nextProps, nextState) {
         const {submitting} = this.state;
         const {submitting: nextSubmitting} = nextState;
-        const {onSubmit: nextOnSubmit, submitted: nextSubmitted} = nextProps;
+        const {onSubmit: nextOnSubmit} = nextProps;
 
         if (
             !submitting && 
@@ -112,7 +109,7 @@ export default class Form extends Component {
             !this.hasErrors(nextProps, nextState)
         ) {
             nextOnSubmit();
-            this.setState({initialSubmit: false})
+            this.setState({initialSubmit: false});
         }
     }
 

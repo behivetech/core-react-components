@@ -9,7 +9,7 @@ describe('Checkbox', () => {
                 checked,
                 value: 'mock event value',
             },
-        }
+        };
     };
 
     afterEach(() => {
@@ -17,13 +17,13 @@ describe('Checkbox', () => {
     });
 
     it('should render with the correct props', () => {
-        const wrapper = shallow(<Checkbox name="mockName" className="mock-class" defaultValue="mock value" />);
+        const wrapper = shallow(<Checkbox name="mockName" className="mock-class" />);
 
         expect(wrapper.debug()).toMatchSnapshot();
     });
 
     it('should render correctly with the prop checked', () => {
-        const wrapper = shallow(<Checkbox name="mockName" checked defaultValue="mock value" />);
+        const wrapper = shallow(<Checkbox name="mockName" checked />);
 
         expect(wrapper.debug()).toMatchSnapshot();
         expect(wrapper.state().checked).toBe(true);
@@ -32,26 +32,26 @@ describe('Checkbox', () => {
     });
 
     it('should render as disabled', () => {
-        const wrapper = shallow(<Checkbox name="mockName" checked defaultValue="mock value" />);
+        const wrapper = shallow(<Checkbox disabled name="mockName" checked />);
 
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.debug()).toMatchSnapshot();
     });
 
     it('should handle clicks correctly', () => {
         const wrapper = shallow(
-            <Checkbox name="mockName" checked defaultValue="mock value" onClick={undefined} />
+            <Checkbox name="mockName" checked onChange={undefined} />
         );
         const wrapperInstance = wrapper.instance();
         const mockEvent = getEvent(true);
-        const mockOnClick = jest.fn();
+        const mockOnChange = jest.fn();
 
         expect(wrapperInstance.state.checked).toBe(true);
-        wrapperInstance.handleClick(getEvent());
+        wrapperInstance.handleChange(getEvent());
         expect(wrapper.state().checked).toBe(false);
-        wrapper.setProps({onClick: mockOnClick})
-        wrapperInstance.handleClick(mockEvent);
+        wrapper.setProps({onChange: mockOnChange});
+        wrapperInstance.handleChange(mockEvent);
         expect(mockEvent.stopPropagation).toHaveBeenCalled();
-        expect(mockOnClick).toHaveBeenCalledWith(mockEvent);
+        expect(mockOnChange).toHaveBeenCalledWith(mockEvent);
         expect(wrapperInstance.state.checked).toBe(true);
     });
 
@@ -59,29 +59,11 @@ describe('Checkbox', () => {
         const mockOnChange = jest.fn();
         const mockEvent = getEvent();
         const wrapperInstance = shallow(
-            <Checkbox name="mockName" checked defaultValue="mock value" onChange={mockOnChange} />
+            <Checkbox name="mockName" checked onChange={mockOnChange} />
         ).instance();
 
         wrapperInstance.handleChange(mockEvent);
         expect(mockEvent.stopPropagation).toHaveBeenCalled();
         expect(mockOnChange).toHaveBeenCalledWith(mockEvent);
-    });
-
-    it('should not set refs for the component', () => {
-        const wrapper = mount(
-            <Checkbox name="mockName" defaultValue="mock value" renderComponent={() => null} />
-        );
-        const wrapperInstance = wrapper.instance();
-
-        expect(wrapperInstance.checkboxRef).toBe(undefined)
-        expect(wrapperInstance.formFieldRef).toBe(undefined)
-    });
-
-    it('should set refs for the component', () => {
-        const wrapper = mount(<Checkbox name="mockName" defaultValue="mock value" />);
-        const wrapperInstance = wrapper.instance();
-
-        expect(wrapperInstance.checkboxRef).toMatchSnapshot();
-        expect(wrapperInstance.formFieldRef).toMatchSnapshot();
     });
 });

@@ -1,131 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch should render as checked 1`] = `
-<div
-  className="switch"
->
-  <div
-    className="mdc-form-field switch--form-field"
-  >
-    <div
-      className="mdc-switch"
-    >
-      <div
-        className="mdc-switch__track"
-      />
-      <div
-        className="mdc-switch__thumb-underlay"
-      >
-        <div
-          className="mdc-switch__thumb"
-        >
-          <input
-            className="mdc-switch__native-control"
-            role="switch"
-            type="checkbox"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <FormFieldHelperText
-    helperText=""
-  />
-</div>
+"<Fragment>
+  <Switch className=\\"switch\\" checked={true} disabled={false} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
+  <label htmlFor=\\"mockName\\" />
+</Fragment>"
 `;
 
 exports[`Switch should render as disabled 1`] = `
-<div
-  className="switch"
->
-  <div
-    className="mdc-form-field switch--form-field"
-  >
-    <div
-      className="mdc-switch"
-    >
-      <div
-        className="mdc-switch__track"
-      />
-      <div
-        className="mdc-switch__thumb-underlay"
-      >
-        <div
-          className="mdc-switch__thumb"
-        >
-          <input
-            className="mdc-switch__native-control"
-            role="switch"
-            type="checkbox"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <FormFieldHelperText
-    helperText=""
-  />
-</div>
+"<Fragment>
+  <Switch className=\\"switch\\" checked={true} disabled={true} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
+  <label htmlFor=\\"mockName\\" />
+</Fragment>"
 `;
 
-exports[`Switch should render with the correct props 1`] = `"<Checkbox name=\\"mockName\\" className=\\"mock-class\\" defaultValue=\\"mock value\\" renderComponent={[Function]} onClick={[Function: noop]} onChange={[Function: noop]} />"`;
-
-exports[`Switch should set refs for the component 1`] = `
-Object {
-  "current": <div
-    class="mdc-switch"
-  >
-    <div
-      class="mdc-switch__track"
-    />
-    <div
-      class="mdc-switch__thumb-underlay"
-    >
-      <div
-        class="mdc-switch__thumb"
-      >
-        <input
-          class="mdc-switch__native-control"
-          id="mockName"
-          name="mockName"
-          role="switch"
-          type="checkbox"
-          value="mock value"
-        />
-      </div>
-    </div>
-  </div>,
-}
-`;
-
-exports[`Switch should set refs for the component 2`] = `
-Object {
-  "current": <div
-    class="mdc-form-field switch--form-field"
-  >
-    <div
-      class="mdc-switch"
-    >
-      <div
-        class="mdc-switch__track"
-      />
-      <div
-        class="mdc-switch__thumb-underlay"
-      >
-        <div
-          class="mdc-switch__thumb"
-        >
-          <input
-            class="mdc-switch__native-control"
-            id="mockName"
-            name="mockName"
-            role="switch"
-            type="checkbox"
-            value="mock value"
-          />
-        </div>
-      </div>
-    </div>
-  </div>,
-}
+exports[`Switch should render with the correct props 1`] = `
+"<Fragment>
+  <Switch className=\\"switch mock-class\\" checked={false} disabled={false} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
+  <label htmlFor=\\"mockName\\" />
+</Fragment>"
 `;
