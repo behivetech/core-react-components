@@ -64,7 +64,8 @@
         "test": "export default NODE_ENV=test; node scripts/test.js",
         "styleguidist": "npx styleguidist server",
         "styleguidist:build": "npx styleguidist build",
-        "styleguidist:deploy": "npx styleguidist build; sleep 2; git push origin `git subtree split --prefix styleguide master`:gh-pages --force"
+        "styleguidist:deploy": "npx styleguidist build; sleep 2; gh-pages -d styleguide -e dist",
+        "gh-help": "gh-pages --help"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -143,6 +144,7 @@
         "eslint-plugin-jest": "^21.27.2",
         "eslint-plugin-react": "^7.11.1",
         "eslint-plugin-react-hooks": "0.0.0",
+        "gh-pages": "^2.0.1",
         "jsdom": "^13.0.0",
         "node-sass": "^4.10.0",
         "react-styleguidist": "^8.0.6",
