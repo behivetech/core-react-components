@@ -4,7 +4,7 @@ import Form from './Form';
 import Switch from './Switch';
 import TextField from './TextField';
 
-module.exports = {
+export default {
 	Button,
 	Checkbox,
 	Form,
