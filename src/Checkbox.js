@@ -5,9 +5,6 @@ import classnames from 'classnames';
 import {MDCCheckbox} from '@material/checkbox';
 import {MDCFormField} from '@material/form-field';
 
-// Components
-import FormFieldHelperText from './FormFieldHelperText';
-
 import './Checkbox.scss';
 
 export default class Checkbox extends Component {

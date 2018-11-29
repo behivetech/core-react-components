@@ -47,11 +47,8 @@ export default class Switch extends Component {
 
     render() {
         const {
-            checked,
             className,
             disabled,
-            error,
-            helperText,
             id,
             label,
             name,
@@ -66,7 +63,7 @@ export default class Switch extends Component {
                         <div className="mdc-switch__thumb-underlay">
                             <div className="mdc-switch__thumb">
                                 <input
-                                    checked={checked}
+                                    checked={this.state.checked}
                                     className="mdc-switch__native-control"
                                     disabled={disabled}
                                     id={id || name}
