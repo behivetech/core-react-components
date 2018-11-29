@@ -1,13 +1,13 @@
-// Vendor Libs
-import 'babel-polyfill';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import Button from './Button';
+import Checkbox from './Checkbox';
+import Form from './Form';
+import Switch from './Switch';
+import TextField from './TextField';
 
-// Components
-import App from './App';
-
-// Styles
-import './index.scss';
-import './styles/mdc-theme.scss';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+module.exports = {
+	Button,
+	Checkbox,
+	Form,
+	Switch,
+	TextField,
+};
