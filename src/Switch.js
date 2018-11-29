@@ -5,9 +5,6 @@ import classnames from 'classnames';
 import {MDCSwitch} from '@material/switch';
 import {MDCFormField} from '@material/form-field';
 
-// Components
-import FormFieldHelperText from './FormFieldHelperText';
-
 // Styles
 import './Switch.scss';
 
@@ -63,7 +60,7 @@ export default class Switch extends Component {
 
         return (
             <div className={classnames('switch', className)}>
-                <div className="mdc-form-field switch--form-field" ref={this.formFieldRef}>
+                <div className="mdc-form-field" ref={this.formFieldRef}>
                     <div className={this.getSwitchClass()} ref={this.switchRef}>
                         <div className="mdc-switch__track" />
                         <div className="mdc-switch__thumb-underlay">
@@ -88,7 +85,6 @@ export default class Switch extends Component {
                         : null
                 }
                 </div>
-                <FormFieldHelperText error={error} helperText={helperText} />
             </div>
         );
     }
@@ -101,10 +97,6 @@ Switch.propTypes = {
     checked: PropTypes.bool,
     /** sets the state of the checkbox to disabled */
     disabled: PropTypes.bool,
-    /** Error to be displayed for this field */
-    error: PropTypes.string,
-    /** Helper text to be displayed for this field */
-    helperText: PropTypes.string,
     /** The id attribute for the input of the checkbox */
     id: PropTypes.string,
     /** the label to be shown with the checkbox */

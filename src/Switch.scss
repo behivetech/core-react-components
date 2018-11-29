@@ -3,10 +3,5 @@
 .switch {
     display: inline-block;
     position: relative;
-    margin-left: 3px;
-    margin-right: 10px;
-
-    &--form-field {
-        margin-bottom: 11px;
-    }
+    margin: 0 10px 0;
 }

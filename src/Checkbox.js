@@ -30,7 +30,7 @@ export default class Checkbox extends Component {
 
     componentWillReceiveProps({checked: nextChecked}) {
         if (this.state.checked !== nextChecked) {
-            this.setState({checked: nextChecked});    
+            this.setState({checked: nextChecked});
         }
     }
 
@@ -52,20 +52,18 @@ export default class Checkbox extends Component {
 
     render() {
         const {
-            className, 
-            disabled, 
-            error,
-            helperText,
-            id, 
-            label, 
-            name, 
+            className,
+            disabled,
+            id,
+            label,
+            name,
         } = this.props;
 
         return (
             <div className={classnames('checkbox', className)}>
                 <div className="mdc-form-field" ref={this.formFieldRef}>
                     <div className={this.getCheckboxClass()} ref={this.checkboxRef}>
-                        <input 
+                        <input
                             type="checkbox"
                             className="mdc-checkbox__native-control"
                             disabled={disabled}
@@ -86,9 +84,8 @@ export default class Checkbox extends Component {
                             ? <label htmlFor={id || name}>{label}</label>
                             : null
                     }
-                </div>   
-                <FormFieldHelperText error={error} helperText={helperText} />
-            </div>     
+                </div>
+            </div>
         );
     }
 }
@@ -100,10 +97,6 @@ Checkbox.propTypes = {
     checked: PropTypes.bool,
     /** sets the state of the checkbox to disabled */
     disabled: PropTypes.bool,
-    /** Error to be displayed for this field */
-    error: PropTypes.string,
-    /** Helper text to be displayed for this field */
-    helperText: PropTypes.string,
     /** The id attribute for the input of the checkbox */
     id: PropTypes.string,
     /** Additional props to be added to the input element */
@@ -112,16 +105,9 @@ Checkbox.propTypes = {
     label: PropTypes.string,
     /** The name attribute for the input of the checkbox */
     name: PropTypes.string,
-    /** 
-        Callback function for when the checkbox changes. It's recommended to use 
-        onClick for the changing event since IE doesn't play well with onChange 
-    */
+    /** Callback function for when the checkbox changes. */
     onChange: PropTypes.func,
-    /** 
-        The values to be compared with the default value with will check or umncheck 
-        the checkbox. If it's an array, this will compare to see if the defaultValue exists 
-        in the checkbox. 
-    */
+    /** The value attribute for the input element */
     value: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.number,

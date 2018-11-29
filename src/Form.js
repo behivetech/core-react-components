@@ -104,8 +104,8 @@ export default class Form extends Component {
         const {onSubmit: nextOnSubmit} = nextProps;
 
         if (
-            !submitting && 
-            nextSubmitting && 
+            !submitting &&
+            nextSubmitting &&
             !this.hasErrors(nextProps, nextState)
         ) {
             nextOnSubmit();
