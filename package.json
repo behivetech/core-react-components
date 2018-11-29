@@ -58,7 +58,7 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.2"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "export SASS_PATH=./node_modules; node scripts/start.js -- --host 0.0.0.0",
     "build": "node scripts/build.js",
