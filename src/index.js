@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import Button from './Button';
+import Checkbox from './Checkbox';
+import Form from './Form';
+import Switch from './Switch';
+import TextField from './TextField';
 
-import styles from './styles.css'
+export {
+    Button,
+    Checkbox,
+    Form,
+    Switch,
+    TextField,
+};
 
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
-}
+export default {
+	Button,
+	Checkbox,
+	Form,
+	Switch,
+	TextField,
+};

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField should render as disabled 1`] = `
+"<TextField className=\\"text-field\\" label={[undefined]} helperText={{...}} dense={false} floatingLabelClassName=\\"\\" fullWidth={false} isRtl={false} leadingIcon={{...}} lineRippleClassName=\\"\\" notchedOutlineClassName=\\"\\" outlined={false} textarea={false} trailingIcon={{...}}>
+  <Input value=\\"\\" onChange={[Function]} className=\\"\\" inputType=\\"input\\" disabled={false} isValid={[undefined]} foundation={{...}} handleValueChange={[Function: handleValueChange]} id={{...}} onBlur={[Function: onBlur]} onFocus={[Function: onFocus]} onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} setDisabled={[Function: setDisabled]} setInputId={[Function: setInputId]} handleFocusChange={[Function: handleFocusChange]} />
+</TextField>"
+`;
+
+exports[`TextField should render as full width 1`] = `
+"<TextField className=\\"text-field\\" label={[undefined]} helperText={{...}} dense={false} floatingLabelClassName=\\"\\" fullWidth={false} isRtl={false} leadingIcon={{...}} lineRippleClassName=\\"\\" notchedOutlineClassName=\\"\\" outlined={false} textarea={false} trailingIcon={{...}}>
+  <Input value=\\"\\" onChange={[Function]} className=\\"\\" inputType=\\"input\\" disabled={false} isValid={[undefined]} foundation={{...}} handleValueChange={[Function: handleValueChange]} id={{...}} onBlur={[Function: onBlur]} onFocus={[Function: onFocus]} onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} setDisabled={[Function: setDisabled]} setInputId={[Function: setInputId]} handleFocusChange={[Function: handleFocusChange]} />
+</TextField>"
+`;
+
+exports[`TextField should render with the correct props 1`] = `
+"<TextField className=\\"text-field\\" label={[undefined]} helperText={{...}} dense={false} floatingLabelClassName=\\"\\" fullWidth={false} isRtl={false} leadingIcon={{...}} lineRippleClassName=\\"\\" notchedOutlineClassName=\\"\\" outlined={false} textarea={false} trailingIcon={{...}}>
+  <Input value=\\"\\" onChange={[Function]} className=\\"\\" inputType=\\"input\\" disabled={false} isValid={[undefined]} foundation={{...}} handleValueChange={[Function: handleValueChange]} id={{...}} onBlur={[Function: onBlur]} onFocus={[Function: onFocus]} onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} setDisabled={[Function: setDisabled]} setInputId={[Function: setInputId]} handleFocusChange={[Function: handleFocusChange]} />
+</TextField>"
+`;

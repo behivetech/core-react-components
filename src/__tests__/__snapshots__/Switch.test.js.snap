@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should render as checked 1`] = `
+"<Fragment>
+  <Switch className=\\"switch\\" checked={true} disabled={false} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
+  <label htmlFor=\\"mockName\\" />
+</Fragment>"
+`;
+
+exports[`Switch should render as disabled 1`] = `
+"<Fragment>
+  <Switch className=\\"switch\\" checked={true} disabled={true} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
+  <label htmlFor=\\"mockName\\" />
+</Fragment>"
+`;
+
+exports[`Switch should render with the correct props 1`] = `
+"<Fragment>
+  <Switch className=\\"switch mock-class\\" checked={false} disabled={false} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
+  <label htmlFor=\\"mockName\\" />
+</Fragment>"
+`;
