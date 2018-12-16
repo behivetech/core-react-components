@@ -1,4 +1,4 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
 module.exports = {
@@ -7,6 +7,7 @@ module.exports = {
     output: {
         path: __dirname+'/dist',
         filename: 'index.js',
+        libraryTarget: 'commonjs2',
     },
     devtool: 'source-map',
     module: {
@@ -49,5 +50,8 @@ module.exports = {
             },
         ],
     },
-    plugins: [new MiniCssExtractPlugin({filename: 'styles.css'})],
+    externals: {
+        'react': 'commonjs react',
+    },
+    // plugins: [new MiniCssExtractPlugin({filename: 'styles.css'})],
 };
