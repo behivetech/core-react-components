@@ -1,9 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form should render with the correct state and props 1`] = `
-"<Form className=\\"mock-class\\" name=\\"mockForm\\" fieldValues={{...}} onSubmit={[Function: noop]}>
-  <form className=\\"form mock-class\\" name=\\"mockForm\\" onSubmit={[Function]} />
-</Form>"
+<Form
+  className="mock-class"
+  fieldValues={
+    Object {
+      "mockField": "mock value",
+    }
+  }
+  name="mockForm"
+  onSubmit={[Function]}
+>
+  <form
+    className="form mock-class"
+    name="mockForm"
+    onSubmit={[Function]}
+  />
+</Form>
 `;
 
 exports[`Form should render with the correct state and props 2`] = `

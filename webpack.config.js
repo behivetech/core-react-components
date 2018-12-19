@@ -43,9 +43,6 @@ module.exports = {
                             includePaths: ['./node_modules'],
                         },
                     },
-                    // {
-                    //     loader: MiniCssExtractPlugin.loader,
-                    // },
                 ],
             },
         ],
@@ -53,5 +50,4 @@ module.exports = {
     externals: {
         'react': 'commonjs react',
     },
-    // plugins: [new MiniCssExtractPlugin({filename: 'styles.css'})],
 };

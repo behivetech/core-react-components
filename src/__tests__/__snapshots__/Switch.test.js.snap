@@ -1,22 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switch should render as checked 1`] = `
-"<Fragment>
-  <Switch className=\\"switch\\" checked={true} disabled={false} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
-  <label htmlFor=\\"mockName\\" />
-</Fragment>"
+<div
+  className="switch"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-switch mdc-switch--checked"
+    >
+      <div
+        className="mdc-switch__track"
+      />
+      <div
+        className="mdc-switch__thumb-underlay"
+      >
+        <div
+          className="mdc-switch__thumb"
+        >
+          <input
+            checked={true}
+            className="mdc-switch__native-control"
+            id="mockName"
+            name="mockName"
+            onChange={[Function]}
+            role="switch"
+            type="checkbox"
+            value={true}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Switch should render as disabled 1`] = `
-"<Fragment>
-  <Switch className=\\"switch\\" checked={true} disabled={true} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
-  <label htmlFor=\\"mockName\\" />
-</Fragment>"
+<div
+  className="switch"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-switch mdc-switch--disabled mdc-switch--checked"
+    >
+      <div
+        className="mdc-switch__track"
+      />
+      <div
+        className="mdc-switch__thumb-underlay"
+      >
+        <div
+          className="mdc-switch__thumb"
+        >
+          <input
+            checked={true}
+            className="mdc-switch__native-control"
+            disabled={true}
+            id="mockName"
+            name="mockName"
+            onChange={[Function]}
+            role="switch"
+            type="checkbox"
+            value={true}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Switch should render with the correct props 1`] = `
-"<Fragment>
-  <Switch className=\\"switch mock-class\\" checked={false} disabled={false} nativeControlId=\\"mockName\\" onChange={[Function]} name=\\"mockName\\" style={[undefined]} value={true} />
-  <label htmlFor=\\"mockName\\" />
-</Fragment>"
+<div
+  className="switch mock-class"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-switch mock-class"
+    >
+      <div
+        className="mdc-switch__track"
+      />
+      <div
+        className="mdc-switch__thumb-underlay"
+      >
+        <div
+          className="mdc-switch__thumb"
+        >
+          <input
+            checked={false}
+            className="mdc-switch__native-control"
+            id="mockName"
+            name="mockName"
+            onChange={[Function]}
+            role="switch"
+            type="checkbox"
+            value={true}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

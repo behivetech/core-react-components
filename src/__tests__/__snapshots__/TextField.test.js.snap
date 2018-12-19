@@ -1,19 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextField should render as disabled 1`] = `
-"<TextField className=\\"text-field\\" label={[undefined]} helperText={{...}} dense={false} floatingLabelClassName=\\"\\" fullWidth={false} isRtl={false} leadingIcon={{...}} lineRippleClassName=\\"\\" notchedOutlineClassName=\\"\\" outlined={false} textarea={false} trailingIcon={{...}}>
-  <Input value=\\"\\" onChange={[Function]} className=\\"\\" inputType=\\"input\\" disabled={false} isValid={[undefined]} foundation={{...}} handleValueChange={[Function: handleValueChange]} id={{...}} onBlur={[Function: onBlur]} onFocus={[Function: onFocus]} onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} setDisabled={[Function: setDisabled]} setInputId={[Function: setInputId]} handleFocusChange={[Function: handleFocusChange]} />
-</TextField>"
+<div
+  className="text-field"
+>
+  <TextField
+    className=""
+    dense={false}
+    floatingLabelClassName=""
+    fullWidth={false}
+    helperText={null}
+    isRtl={false}
+    label="mock label"
+    leadingIcon={null}
+    lineRippleClassName=""
+    notchedOutlineClassName=""
+    outlined={false}
+    textarea={false}
+    trailingIcon={null}
+  >
+    <Input
+      className=""
+      disabled={false}
+      foundation={
+        Object {
+          "activateFocus": [Function],
+          "autoCompleteFocus": [Function],
+          "deactivateFocus": [Function],
+          "handleValidationAttributeMutation_": [Function],
+          "setDisabled": [Function],
+          "setTransformOrigin": [Function],
+          "setValue": [Function],
+        }
+      }
+      handleFocusChange={[Function]}
+      handleValueChange={[Function]}
+      id={null}
+      inputType="input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      setDisabled={[Function]}
+      setInputId={[Function]}
+      value=""
+    />
+  </TextField>
+  <FormFieldHelperText
+    helperText=""
+  />
+</div>
 `;
 
 exports[`TextField should render as full width 1`] = `
-"<TextField className=\\"text-field\\" label={[undefined]} helperText={{...}} dense={false} floatingLabelClassName=\\"\\" fullWidth={false} isRtl={false} leadingIcon={{...}} lineRippleClassName=\\"\\" notchedOutlineClassName=\\"\\" outlined={false} textarea={false} trailingIcon={{...}}>
-  <Input value=\\"\\" onChange={[Function]} className=\\"\\" inputType=\\"input\\" disabled={false} isValid={[undefined]} foundation={{...}} handleValueChange={[Function: handleValueChange]} id={{...}} onBlur={[Function: onBlur]} onFocus={[Function: onFocus]} onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} setDisabled={[Function: setDisabled]} setInputId={[Function: setInputId]} handleFocusChange={[Function: handleFocusChange]} />
-</TextField>"
+<div
+  className="text-field"
+>
+  <TextField
+    className=""
+    dense={false}
+    floatingLabelClassName=""
+    fullWidth={false}
+    helperText={null}
+    isRtl={false}
+    label="mock label"
+    leadingIcon={null}
+    lineRippleClassName=""
+    notchedOutlineClassName=""
+    outlined={false}
+    textarea={false}
+    trailingIcon={null}
+  >
+    <Input
+      className=""
+      disabled={false}
+      foundation={
+        Object {
+          "activateFocus": [Function],
+          "autoCompleteFocus": [Function],
+          "deactivateFocus": [Function],
+          "handleValidationAttributeMutation_": [Function],
+          "setDisabled": [Function],
+          "setTransformOrigin": [Function],
+          "setValue": [Function],
+        }
+      }
+      handleFocusChange={[Function]}
+      handleValueChange={[Function]}
+      id={null}
+      inputType="input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      setDisabled={[Function]}
+      setInputId={[Function]}
+      value=""
+    />
+  </TextField>
+  <FormFieldHelperText
+    helperText=""
+  />
+</div>
 `;
 
 exports[`TextField should render with the correct props 1`] = `
-"<TextField className=\\"text-field\\" label={[undefined]} helperText={{...}} dense={false} floatingLabelClassName=\\"\\" fullWidth={false} isRtl={false} leadingIcon={{...}} lineRippleClassName=\\"\\" notchedOutlineClassName=\\"\\" outlined={false} textarea={false} trailingIcon={{...}}>
-  <Input value=\\"\\" onChange={[Function]} className=\\"\\" inputType=\\"input\\" disabled={false} isValid={[undefined]} foundation={{...}} handleValueChange={[Function: handleValueChange]} id={{...}} onBlur={[Function: onBlur]} onFocus={[Function: onFocus]} onMouseDown={[Function: onMouseDown]} onTouchStart={[Function: onTouchStart]} setDisabled={[Function: setDisabled]} setInputId={[Function: setInputId]} handleFocusChange={[Function: handleFocusChange]} />
-</TextField>"
+<div
+  className="text-field"
+>
+  <TextField
+    className=""
+    dense={false}
+    floatingLabelClassName=""
+    fullWidth={false}
+    helperText={null}
+    isRtl={false}
+    label="mock label"
+    leadingIcon={null}
+    lineRippleClassName=""
+    notchedOutlineClassName=""
+    outlined={false}
+    textarea={false}
+    trailingIcon={null}
+  >
+    <Input
+      className=""
+      disabled={false}
+      foundation={
+        Object {
+          "activateFocus": [Function],
+          "autoCompleteFocus": [Function],
+          "deactivateFocus": [Function],
+          "handleValidationAttributeMutation_": [Function],
+          "setDisabled": [Function],
+          "setTransformOrigin": [Function],
+          "setValue": [Function],
+        }
+      }
+      handleFocusChange={[Function]}
+      handleValueChange={[Function]}
+      id={null}
+      inputType="input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      setDisabled={[Function]}
+      setInputId={[Function]}
+      value=""
+    />
+  </TextField>
+  <FormFieldHelperText
+    helperText=""
+  />
+</div>
 `;

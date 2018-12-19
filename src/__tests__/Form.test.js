@@ -1,4 +1,4 @@
-import Form from "../Form";
+import Form from '../Form';
 
 describe('Form', () => {
     const getProps = (updateProps) => {
@@ -14,7 +14,7 @@ describe('Form', () => {
         const wrapper = mount(<Form {...getProps(mockProps)} />);
         const {context, fieldValues} = wrapper.state();
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
         expect(fieldValues).toEqual(mockProps.fieldValues);
         expect(context).toMatchSnapshot();
     });

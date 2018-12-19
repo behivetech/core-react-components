@@ -1,22 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox should render as disabled 1`] = `
-"<Fragment>
-  <WithRipple(Checkbox) className=\\"switch\\" checked={true} disabled={true} nativeControlId=\\"mockName\\" name=\\"mockName\\" onChange={[Function]} style={{...}} value={true} unbounded={true} onMouseDown={[Function: onMouseDown]} onMouseUp={[Function: onMouseUp]} onTouchStart={[Function: onTouchStart]} onTouchEnd={[Function: onTouchEnd]} onKeyDown={[Function: onKeyDown]} onKeyUp={[Function: onKeyUp]} onFocus={[Function: onFocus]} onBlur={[Function: onBlur]} indeterminate={false} initRipple={[Function: initRipple]} />
-  <label htmlFor=\\"mockName\\" />
-</Fragment>"
+<div
+  className="checkbox"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-checkbox mdc-checkbox--disabled"
+    >
+      <input
+        className="mdc-checkbox__native-control"
+        disabled={true}
+        id="mockName"
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Checkbox should render correctly with the prop checked 1`] = `
-"<Fragment>
-  <WithRipple(Checkbox) className=\\"switch\\" checked={true} disabled={false} nativeControlId=\\"mockName\\" name=\\"mockName\\" onChange={[Function]} style={{...}} value={true} unbounded={true} onMouseDown={[Function: onMouseDown]} onMouseUp={[Function: onMouseUp]} onTouchStart={[Function: onTouchStart]} onTouchEnd={[Function: onTouchEnd]} onKeyDown={[Function: onKeyDown]} onKeyUp={[Function: onKeyUp]} onFocus={[Function: onFocus]} onBlur={[Function: onBlur]} indeterminate={false} initRipple={[Function: initRipple]} />
-  <label htmlFor=\\"mockName\\" />
-</Fragment>"
+<div
+  className="checkbox"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-checkbox"
+    >
+      <input
+        className="mdc-checkbox__native-control"
+        id="mockName"
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Checkbox should render with the correct props 1`] = `
-"<Fragment>
-  <WithRipple(Checkbox) className=\\"switch mock-class\\" checked={false} disabled={false} nativeControlId=\\"mockName\\" name=\\"mockName\\" onChange={[Function]} style={{...}} value={true} unbounded={true} onMouseDown={[Function: onMouseDown]} onMouseUp={[Function: onMouseUp]} onTouchStart={[Function: onTouchStart]} onTouchEnd={[Function: onTouchEnd]} onKeyDown={[Function: onKeyDown]} onKeyUp={[Function: onKeyUp]} onFocus={[Function: onFocus]} onBlur={[Function: onBlur]} indeterminate={false} initRipple={[Function: initRipple]} />
-  <label htmlFor=\\"mockName\\" />
-</Fragment>"
+<div
+  className="checkbox mock-class"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-checkbox"
+    >
+      <input
+        className="mdc-checkbox__native-control"
+        id="mockName"
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 `;

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withSwitchControl should render a component and correct props are set 1`] = `
+<MockComponent
+  className="mock-class"
+  name="mockName"
+>
+  <FormFieldControlled
+    className="mock-class"
+    name="mockName"
+  >
+    <SwitchControlled
+      className="mock-class"
+      formState={
+        Object {
+          "getFieldError": [MockFunction],
+          "getFieldValue": [MockFunction] {
+            "calls": Array [
+              Array [
+                "mockName",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "setFieldValidators": [MockFunction],
+          "setFieldValue": [MockFunction],
+          "setFieldValueDebounced": [MockFunction],
+          "shouldDisable": [MockFunction],
+        }
+      }
+      name="mockName"
+      onChange={[Function]}
+      value={true}
+    >
+      <MockComponentWrapped
+        checked={false}
+        className="mock-class"
+        name="mockName"
+        onChange={[Function]}
+        value={true}
+      >
+        <div />
+      </MockComponentWrapped>
+    </SwitchControlled>
+  </FormFieldControlled>
+</MockComponent>
+`;

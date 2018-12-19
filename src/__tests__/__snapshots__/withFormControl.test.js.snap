@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withFormControl should pass fromState to the warapped component 1`] = `
+<MockComponent
+  className="mock-class"
+  name="mockName"
+>
+  <FormFieldControlled
+    className="mock-class"
+    name="mockName"
+  >
+    <Consumer>
+      <MockComponentWrapped
+        className="mock-class"
+        formState={
+          Object {
+            "getFieldError": [MockFunction],
+            "getFieldValue": [MockFunction],
+            "setFieldValidators": [MockFunction],
+            "setFieldValue": [MockFunction],
+            "setFieldValueDebounced": [MockFunction],
+            "shouldDisable": [MockFunction] {
+              "calls": Array [
+                Array [],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            },
+          }
+        }
+        name="mockName"
+      >
+        <div />
+      </MockComponentWrapped>
+    </Consumer>
+  </FormFieldControlled>
+</MockComponent>
+`;

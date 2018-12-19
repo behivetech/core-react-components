@@ -1,4 +1,4 @@
-import TextField from "../TextField";
+import TextField from '../TextField';
 
 describe('TextField', () => {
     const event = {
@@ -9,21 +9,21 @@ describe('TextField', () => {
     };
 
     it('should render with the correct props', () => {
-        const wrapper = shallow(<TextField name="mockName" />);
+        const wrapper = shallow(<TextField name="mockName" label="mock label" />);
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should render as disabled', () => {
-        const wrapper = shallow(<TextField name="mockName" disabled />);
+        const wrapper = shallow(<TextField name="mockName" disabled label="mock label" />);
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should render as full width', () => {
-        const wrapper = shallow(<TextField name="mockName" fullWidth />);
+        const wrapper = shallow(<TextField name="mockName" fullWidth label="mock label" />);
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 });
 

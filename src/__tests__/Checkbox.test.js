@@ -1,4 +1,4 @@
-import Checkbox from "../Checkbox";
+import Checkbox from '../Checkbox';
 
 // TODO: need to figure out how to test MDCSwitch and MDCFormField
 describe('Checkbox', () => {
@@ -19,13 +19,13 @@ describe('Checkbox', () => {
     it('should render with the correct props', () => {
         const wrapper = shallow(<Checkbox name="mockName" className="mock-class" />);
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should render correctly with the prop checked', () => {
         const wrapper = shallow(<Checkbox name="mockName" checked />);
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
         expect(wrapper.state().checked).toBe(true);
         wrapper.setProps({checked: false});
         expect(wrapper.state().checked).toBe(false);
@@ -34,7 +34,7 @@ describe('Checkbox', () => {
     it('should render as disabled', () => {
         const wrapper = shallow(<Checkbox disabled name="mockName" checked />);
 
-        expect(wrapper.debug()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should handle clicks correctly', () => {
