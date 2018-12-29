@@ -1,6 +1,7 @@
 // Vendor Libs
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {omit} from 'lodash';
 
 // Components
 import TextField from './TextField.js';
@@ -18,7 +19,7 @@ class TextFieldControlled extends Component {
     }
 
     componentDidMount() {
-        const {formState, value} = this.props;
+        const {formState, name, value} = this.props;
         
         if (value) {
             formState.setFieldValue(name, value);
@@ -35,7 +36,13 @@ class TextFieldControlled extends Component {
     }
 
     render() {
-        const textField = <TextField {...this.props} onChange={this.handleChange} value={this.state.value} />;
+        const textField = (
+            <TextField 
+                {...omit(this.props, ['formState'])} 
+                onChange={this.handleChange} 
+                value={this.state.value} 
+            />
+        );
 
         return (this.props.validate)
             ? withValidation(textField)
@@ -49,6 +56,8 @@ TextFieldControlled.propTypes = {
         getFieldValue: PropTypes.func.isRequired,
         /** Sets the field value in the FormControlled to be a part of the JSON that will be pushed. */
         setFieldValue: PropTypes.func.isRequired,
+        /** Same as setFieldValue, but deboinces the onChange events. */
+        setFieldValueDebounced: PropTypes.func.isRequired,
     }),
     /** Name of the field. Required to be used as a key as part of the JSON that will be pushed */
     name: PropTypes.string.isRequired, 

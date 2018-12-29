@@ -1,22 +1,21 @@
 // Vendor Libs
-import React, {Component, createRef} from 'react';
+import React, {createRef} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {MDCSwitch} from '@material/switch';
 import {MDCFormField} from '@material/form-field';
 
+// Components
+import Checkbox from './Checkbox';
+
 // Styles
 import './Switch.scss';
 
-export default class Switch extends Component {
+export default class Switch extends Checkbox {
     constructor(props) {
         super(props);
         this.switchRef = createRef();
         this.formFieldRef = createRef();
-        this.state = {
-            checked: props.checked,
-            indeterminate: false,
-        };
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -25,15 +24,6 @@ export default class Switch extends Component {
         const formField = new MDCFormField(this.formFieldRef.current);
 
         formField.input = checkbox;
-    }
-
-    handleChange(event) {
-        event.stopPropagation();
-        this.setState({
-            checked: event.target.checked,
-            indeterminate: event.target.indeterminate,
-        });
-        this.props.onChange(event);
     }
 
     getSwitchClass() {

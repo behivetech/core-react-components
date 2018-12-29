@@ -108,7 +108,7 @@ exports[`TextField should render as full width 1`] = `
 
 exports[`TextField should render with the correct props 1`] = `
 <div
-  className="text-field"
+  className="text-field mock-class"
 >
   <TextField
     className=""

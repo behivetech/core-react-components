@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextFieldControlled should render with the correct props 1`] = `
+<TextFieldControlled
+  className="mock-class"
+  formState={
+    Object {
+      "getFieldError": [MockFunction],
+      "getFieldValue": [MockFunction],
+      "setFieldValidators": [MockFunction],
+      "setFieldValue": [MockFunction],
+      "setFieldValueDebounced": [MockFunction],
+      "shouldDisable": [MockFunction],
+    }
+  }
+  label="mock-label"
+  name="mockName"
+  onChange={[Function]}
+  value=""
+/>
+`;
+
+exports[`TextFieldControlled should render with the correct props 2`] = `
+<TextField
+  className="mock-class"
+  label="mock-label"
+  name="mockName"
+  onChange={[Function]}
+  value=""
+/>
+`;
+
+exports[`TextFieldControlled should render with the correct props 3`] = `
+<TextField
+  className="mock-class"
+  label="mock-label"
+  name="mockName"
+  onChange={[Function]}
+  validate={
+    Object {
+      "mockValidate": [MockFunction],
+    }
+  }
+  value=""
+/>
+`;

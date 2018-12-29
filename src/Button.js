@@ -1,50 +1,49 @@
 
 // Vendor Libs
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import MdcButton from '@material/react-button';
+import {pick} from 'lodash';
 
 // Styles
 import '@material/react-button/index.scss';
 
-const Button = ({
-    children,
-    className,
-    dense,
-    disabled,
-    href,
-    icon,
-    onClick,
-    outlined,
-    raised,
-    type,
-    unelevated,
-}) => {
-    const handleClick = (event) => {
+export default class Button extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
         event.preventDefault();
 
-        onClick();
-    };
+        this.props.onClick(event);
+    }
 
-    const props = {
-        children: (type === 'submit')
-            ? children || 'submit'
-            : children,
-        className: classnames({button: true}, className),
-        dense,
-        disabled,
-        href,
-        icon,
-        onClick: handleClick,
-        outlined,
-        raised,
-        type,
-        unelevated,
-    };
-
-    return <MdcButton {...props} />;
-};
+    render() {
+        const {children, className, type} = this.props;
+        const props = {
+            ...pick(this.props, [
+                'children',
+                'className',
+                'dense',
+                'disabled',
+                'href',
+                'icon',
+                'outlined',
+                'raised',
+                'type',
+                'unelevated',
+            ]),
+            children: children || type,
+            className: classnames('button', className),
+            onClick: this.handleClick,
+        };
+        
+        return <MdcButton {...props} />;
+    }
+}
 
 Button.propTypes = {
     /** Text to be displayed within root element. */
@@ -75,5 +74,3 @@ Button.defaultProps = {
     onClick: () => null,
     type: 'button',
 };
-
-export default Button;

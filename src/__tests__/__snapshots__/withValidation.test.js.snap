@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withValidation should render component and run validations on mount 1`] = `
+<MockComponent
+  className="mock-class"
+  formState={
+    Object {
+      "getFieldValues": [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": Object {
+              "mockField": "mock value",
+            },
+          },
+        ],
+      },
+      "getInitialSubmit": [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": false,
+          },
+          Object {
+            "isThrow": false,
+            "value": false,
+          },
+        ],
+      },
+      "setFieldError": [MockFunction] {
+        "calls": Array [
+          Array [
+            "mockName",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "unsetFieldError": [MockFunction],
+    }
+  }
+  name="mockName"
+  onChange={[MockFunction]}
+  validate={
+    Array [
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "mock value",
+            Object {
+              "mockField": "mock value",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": "mock error",
+          },
+        ],
+      },
+    ]
+  }
+  value="mock value"
+>
+  <FormFieldValidation
+    className="mock-class"
+    formState={
+      Object {
+        "getFieldValues": [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": Object {
+                "mockField": "mock value",
+              },
+            },
+          ],
+        },
+        "getInitialSubmit": [MockFunction] {
+          "calls": Array [
+            Array [],
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": false,
+            },
+            Object {
+              "isThrow": false,
+              "value": false,
+            },
+          ],
+        },
+        "setFieldError": [MockFunction] {
+          "calls": Array [
+            Array [
+              "mockName",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        },
+        "unsetFieldError": [MockFunction],
+      }
+    }
+    name="mockName"
+    onChange={[MockFunction]}
+    validate={
+      Array [
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "mock value",
+              Object {
+                "mockField": "mock value",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": "mock error",
+            },
+          ],
+        },
+      ]
+    }
+    value="mock value"
+  >
+    <MockComponentWrapped
+      className="mock-class"
+      error={null}
+      formState={
+        Object {
+          "getFieldValues": [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": Object {
+                  "mockField": "mock value",
+                },
+              },
+            ],
+          },
+          "getInitialSubmit": [MockFunction] {
+            "calls": Array [
+              Array [],
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": false,
+              },
+              Object {
+                "isThrow": false,
+                "value": false,
+              },
+            ],
+          },
+          "setFieldError": [MockFunction] {
+            "calls": Array [
+              Array [
+                "mockName",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "unsetFieldError": [MockFunction],
+        }
+      }
+      name="mockName"
+      onChange={[Function]}
+      validate={
+        Array [
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "mock value",
+                Object {
+                  "mockField": "mock value",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": "mock error",
+              },
+            ],
+          },
+        ]
+      }
+      value="mock value"
+    >
+      <div />
+    </MockComponentWrapped>
+  </FormFieldValidation>
+</MockComponent>
+`;
+
+exports[`withValidation should return an error if the imported validation function does not exist 1`] = `
+<MockComponentWrapped
+  className="mock-class"
+  error={null}
+  formState={
+    Object {
+      "getFieldValues": [MockFunction],
+      "getInitialSubmit": [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": false,
+          },
+          Object {
+            "isThrow": false,
+            "value": false,
+          },
+        ],
+      },
+      "setFieldError": [MockFunction] {
+        "calls": Array [
+          Array [
+            "mockName",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "unsetFieldError": [MockFunction],
+    }
+  }
+  name="mockName"
+  onChange={[Function]}
+  validate={
+    Array [
+      "mockValidation",
+    ]
+  }
+/>
+`;
+
+exports[`withValidation should validate with an imported validation function and error should be null 1`] = `
+<MockComponentWrapped
+  className="mock-class"
+  error={null}
+  formState={
+    Object {
+      "getFieldValues": [MockFunction],
+      "getInitialSubmit": [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": false,
+          },
+          Object {
+            "isThrow": false,
+            "value": false,
+          },
+        ],
+      },
+      "setFieldError": [MockFunction] {
+        "calls": Array [
+          Array [
+            "mockName",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "unsetFieldError": [MockFunction],
+    }
+  }
+  name="mockName"
+  onChange={[Function]}
+  validate={
+    Array [
+      "required",
+    ]
+  }
+/>
+`;

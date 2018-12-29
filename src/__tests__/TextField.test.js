@@ -1,17 +1,12 @@
 import TextField from '../TextField';
 
 describe('TextField', () => {
-    const event = {
-        stopPropagation: jest.fn(),
-        target: {
-            value: 'mock event value',
-        },
-    };
-
     it('should render with the correct props', () => {
-        const wrapper = shallow(<TextField name="mockName" label="mock label" />);
+        const wrapper = shallow(<TextField className="mock-class" name="mockName" label="mock label" />);
 
         expect(wrapper).toMatchSnapshot();
+        expect(wrapper.instance().props.onChange()).toBe(null);
+        expect(wrapper.instance().state.value).toBe('');
     });
 
     it('should render as disabled', () => {
@@ -24,6 +19,23 @@ describe('TextField', () => {
         const wrapper = shallow(<TextField name="mockName" fullWidth label="mock label" />);
 
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should handle a change event', () => {
+        const mockEvent = {
+            stopPropagation: jest.fn(),
+            target: {
+                value: 'mock event value',
+            },
+        };
+        const wrapperInstance = shallow(
+            <TextField name="mockName" fullWidth label="mock label" onChange={jest.fn()} />
+        ).instance();
+
+        wrapperInstance.handleOnChange(mockEvent);
+        expect(mockEvent.stopPropagation).toBeCalled();
+        expect(wrapperInstance.state.value).toBe(mockEvent.target.value);
+        expect(wrapperInstance.props.onChange).toBeCalledWith(mockEvent);
     });
 });
 

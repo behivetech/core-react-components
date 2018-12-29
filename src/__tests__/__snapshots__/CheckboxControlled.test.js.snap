@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxControlled should render with the correct props 1`] = `
+<SwitchControlled
+  className="mock-class"
+  formState={
+    Object {
+      "getFieldError": [MockFunction],
+      "getFieldValue": [MockFunction],
+      "setFieldValidators": [MockFunction],
+      "setFieldValue": [MockFunction],
+      "setFieldValueDebounced": [MockFunction],
+      "shouldDisable": [MockFunction],
+    }
+  }
+  name="mockName"
+/>
+`;
+
+exports[`CheckboxControlled should render with the correct props 2`] = `
+<CheckboxControlled
+  className="mock-class"
+  name="mockName"
+/>
+`;
+
+exports[`CheckboxControlled should render with the correct props 3`] = `
+<Checkbox
+  checked={false}
+  className="checkbox-controlled mock-class"
+  name="mockName"
+  onChange={[Function]}
+  value={true}
+/>
+`;

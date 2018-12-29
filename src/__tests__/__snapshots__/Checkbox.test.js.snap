@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Checkbox should render as checked 1`] = `
+<div
+  className="checkbox"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-checkbox"
+    >
+      <input
+        className="mdc-checkbox__native-control"
+        id="mockName"
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Checkbox should render as disabled 1`] = `
 <div
   className="checkbox"
@@ -38,9 +75,52 @@ exports[`Checkbox should render as disabled 1`] = `
 </div>
 `;
 
-exports[`Checkbox should render correctly with the prop checked 1`] = `
+exports[`Checkbox should render with a label 1`] = `
 <div
   className="checkbox"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-checkbox mdc-checkbox--disabled"
+    >
+      <input
+        className="mdc-checkbox__native-control"
+        disabled={true}
+        id="mockName"
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+    <label
+      htmlFor="mockName"
+    >
+      mock label
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should render with the correct props 1`] = `
+<div
+  className="checkbox mock-class"
 >
   <div
     className="mdc-form-field"
@@ -75,9 +155,9 @@ exports[`Checkbox should render correctly with the prop checked 1`] = `
 </div>
 `;
 
-exports[`Checkbox should render with the correct props 1`] = `
+exports[`Checkbox should set the name and id props correctly 1`] = `
 <div
-  className="checkbox mock-class"
+  className="checkbox"
 >
   <div
     className="mdc-form-field"
@@ -87,7 +167,44 @@ exports[`Checkbox should render with the correct props 1`] = `
     >
       <input
         className="mdc-checkbox__native-control"
-        id="mockName"
+        id="mockId"
+        type="checkbox"
+      />
+      <div
+        className="mdc-checkbox__background"
+      >
+        <svg
+          className="mdc-checkbox__checkmark"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className="mdc-checkbox__checkmark-path"
+            d="M1.73,12.91 8.1,19.28 22.79,4.59"
+            fill="none"
+          />
+        </svg>
+        <div
+          className="mdc-checkbox__mixedmark"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox should set the name and id props correctly 2`] = `
+<div
+  className="checkbox"
+>
+  <div
+    className="mdc-form-field"
+  >
+    <div
+      className="mdc-checkbox"
+    >
+      <input
+        className="mdc-checkbox__native-control"
+        id="mockId"
         type="checkbox"
       />
       <div

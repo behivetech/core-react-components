@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {
     debounce,
-    isEmpty,
-    isFunction,
+    difference,
     noop,
-    transform,
+    union,
 } from 'lodash';
-import * as validators from './lib-app/validators';
 
 const DEFAULT_CONTEXT = {
-    getFieldError: noop,
     getFieldValue: noop,
-    setFieldValidators: noop,
+    getFieldValues: noop,
+    getInitialSubmit: noop,
+    setFieldError: noop,
     setFieldValue: noop,
     setFieldValueDebounced: noop,
     shouldDisable: noop,
+    unsetFieldError: noop,
 };
 
 export const FormContext = React.createContext(DEFAULT_CONTEXT);
@@ -30,12 +30,20 @@ export default class Form extends Component {
             return this.state.fieldValues[fieldName];
         };
 
-        this.getFieldError = (fieldName) => {
-            const {fieldErrors, initialSubmit} = this.state;
+        this.getFieldValues = () => {
+            return this.state.fieldValues;
+        };
 
-            return (initialSubmit)
-                ? fieldErrors[fieldName]
-                : undefined;
+        this.getInitialSubmit = () => {
+            return this.state.initialSubmit;
+        };
+
+        this.setFieldError = (fieldName) => {
+            this.setState({fieldErrors: union(this.state.fieldErrors, [fieldName])});
+        };
+
+        this.unsetFieldError = (fieldName) => {
+            this.setState({fieldErrors: difference(this.state.fieldErrors, [fieldName])});
         };
 
         this.setFieldValue = (fieldName, value) => {
@@ -45,18 +53,7 @@ export default class Form extends Component {
                         ...this.state.fieldValues,
                         [fieldName]: value,
                     },
-                }, () => this.validateField(fieldName));
-            }
-        };
-
-        this.setFieldValidators = (fieldName, validate) => {
-            if (fieldName && validate) {
-                this.setState({
-                    fieldValidators: {
-                        ...this.state.fieldValidators,
-                        [fieldName]: validate,
-                    },
-                }, () => this.validateField(fieldName));
+                });
             }
         };
 
@@ -68,16 +65,17 @@ export default class Form extends Component {
 
         this.state = {
             context: {
-                getFieldError: this.getFieldError,
                 getFieldValue: this.getFieldValue,
-                setFieldValidators: this.setFieldValidators,
+                getFieldValues: this.getFieldValues,
+                getInitialSubmit: this.getInitialSubmit,
+                setFieldError: this.setFieldError,
                 setFieldValue: this.setFieldValue,
                 setFieldValueDebounced: this.setFieldValueDebounced,
                 shouldDisable: this.shouldDisable,
+                unsetFieldError: this.unsetFieldError,
             },
-            fieldErrors: {},
+            fieldErrors: [],
             fieldValues: {},
-            fieldValidators: {},
             initialSubmit: false,
             submitting: false,
         };
@@ -115,61 +113,8 @@ export default class Form extends Component {
         }
     }
 
-    setFieldError(fieldName, error) {
-        const currentFieldError = this.state.fieldErrors[fieldName];
-
-        if (
-            fieldName &&
-            (
-                (error && error !== currentFieldError) ||
-                (!error && currentFieldError)
-            )
-        ) {
-            this.setState({
-                fieldErrors: {
-                    ...this.state.fieldErrors,
-                    [fieldName]: error,
-                },
-            });
-        }
-    }
-
-    validateField(fieldName, forceValidate) {
-        const {fieldValues, fieldValidators} = this.state;
-        const fieldValidatorsArray = fieldValidators[fieldName];
-        let fieldError = null;
-
-        if (fieldValidatorsArray && fieldValidatorsArray.length) {
-            const fieldValue = this.getFieldValue(fieldName);
-
-            // Using transform to iterate through the validators until an error is found.
-            // Only sending one error at a time to the form field to prevent a mass
-            // amount of errors showing up. This is also a much more efficient approach
-            // so all validators aren't iterated through every time the field needs to
-            // be validated.
-            transform(fieldValidatorsArray, (errors, validator) => {
-                if (isFunction(validator)) {
-                    fieldError = validator(fieldValue, fieldValues);
-                } else {
-                    const importedValidator = validators[validator]; // eslint-disable-line
-
-                    if (importedValidator && isFunction(importedValidator)) {
-                        fieldError = importedValidator(fieldValue, fieldValues);
-                    } else {
-                        fieldError = `${validator} is not a valid validator.`;
-                    }
-                }
-
-                return !fieldError;
-            });
-
-        }
-
-        this.setFieldError(fieldName, fieldError);
-    }
-
     hasErrors(props = this.props, state = this.state) {
-        return (!isEmpty(state.fieldErrors) || !!props.formError);
+        return (!!state.fieldErrors.length || !!props.formError);
     }
 
     handleSubmit(event) {

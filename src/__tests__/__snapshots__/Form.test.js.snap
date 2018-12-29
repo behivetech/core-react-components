@@ -21,11 +21,13 @@ exports[`Form should render with the correct state and props 1`] = `
 
 exports[`Form should render with the correct state and props 2`] = `
 Object {
-  "getFieldError": [Function],
   "getFieldValue": [Function],
-  "setFieldValidators": [Function],
+  "getFieldValues": [Function],
+  "getInitialSubmit": [Function],
+  "setFieldError": [Function],
   "setFieldValue": [Function],
   "setFieldValueDebounced": [Function],
   "shouldDisable": [Function],
+  "unsetFieldError": [Function],
 }
 `;
