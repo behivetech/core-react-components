@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 
 // Components
-import {FormContext} from './Form';
+import {FormContext} from './FormControlled';
 
 export default function (WrappedComponent) {
     return class FormFieldControlled extends Component {
