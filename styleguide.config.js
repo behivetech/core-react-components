@@ -12,19 +12,6 @@ module.exports = {
     pagePerSection: true,
     sections: [
         {
-            name: 'Styling',
-            sections: [
-                {
-                    name: 'Styling For Components',
-                    content: './styleguidist-docs/StylingComponents.md',
-                },
-                {
-                    name: 'Styling For Layouts',
-                    content: './styleguidist-docs/StylingLayouts.md',
-                },
-            ],
-        },
-        {
             name: 'Core Components',
             components: () => [
                 './src/TextField.js',
@@ -39,7 +26,7 @@ module.exports = {
             },
         },
     ],
-    webpackConfig: merge(require('./config/webpack.config.dev.js'), {
+    webpackConfig: merge(require('./webpack.config.js'), {
         devServer: {
             contentBase: PATHS.build,
             historyApiFallback: true,

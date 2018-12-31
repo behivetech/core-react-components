@@ -1,13 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form should render with the correct state and props 1`] = `
+exports[`Form should render correctly with default props 1`] = `
 <Form
   className="mock-class"
-  fieldValues={
-    Object {
-      "mockField": "mock value",
-    }
-  }
   name="mockForm"
   onSubmit={[Function]}
 >
@@ -17,17 +12,4 @@ exports[`Form should render with the correct state and props 1`] = `
     onSubmit={[Function]}
   />
 </Form>
-`;
-
-exports[`Form should render with the correct state and props 2`] = `
-Object {
-  "getFieldValue": [Function],
-  "getFieldValues": [Function],
-  "getInitialSubmit": [Function],
-  "setFieldError": [Function],
-  "setFieldValue": [Function],
-  "setFieldValueDebounced": [Function],
-  "shouldDisable": [Function],
-  "unsetFieldError": [Function],
-}
 `;

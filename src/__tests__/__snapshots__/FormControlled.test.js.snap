@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormControlled should render with the correct state and props 1`] = `
+<FormControlled
+  className="mock-class"
+  fieldValues={
+    Object {
+      "mockField": "mock value",
+    }
+  }
+  name="mockForm"
+  onSubmit={[Function]}
+>
+  <Form
+    className="form-controlled mock-class"
+    name="mockForm"
+    onSubmit={[Function]}
+  >
+    <form
+      className="form form-controlled mock-class"
+      name="mockForm"
+      onSubmit={[Function]}
+    />
+  </Form>
+</FormControlled>
+`;
+
+exports[`FormControlled should render with the correct state and props 2`] = `
+Object {
+  "getFieldValue": [Function],
+  "getFieldValues": [Function],
+  "getInitialSubmit": [Function],
+  "setFieldError": [Function],
+  "setFieldValue": [Function],
+  "setFieldValueDebounced": [Function],
+  "shouldDisable": [Function],
+  "unsetFieldError": [Function],
+}
+`;
