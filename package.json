@@ -1,7 +1,7 @@
 {
     "name": "core-react-components",
     "author": "Bruce Smith",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "description": "Core components using Material.io for design and the ReactJs Context API",
     "private": false,
     "license": "MIT",
