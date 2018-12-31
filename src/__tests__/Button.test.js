@@ -25,7 +25,6 @@ describe('Button', () => {
         const wrapperInstance = shallow(<Button onClick={mockOnClick} />).instance();
 
         wrapperInstance.handleClick(mockEvent);
-        expect(mockEvent.preventDefault).toHaveBeenCalled();
         expect(mockOnClick).toHaveBeenCalledWith(mockEvent);
     });
 });

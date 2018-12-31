@@ -33,8 +33,8 @@ export default class FormControlled extends Component {
             return this.state.fieldValues[fieldName];
         };
 
-        this.getFieldValues = () => {
-            return this.state.fieldValues;
+        this.getFieldValues = (state = this.state) => {
+            return state.fieldValues;
         };
 
         this.getInitialSubmit = () => {
@@ -64,7 +64,7 @@ export default class FormControlled extends Component {
             return (this.state.submitting);
         };
 
-        this.setFieldValueDebounced = debounce(this.setFieldValue, 200, {trailing: true});
+        this.setFieldValueDebounced = debounce(this.setFieldValue, 300, {trailing: true});
 
         this.state = {
             context: {
@@ -111,7 +111,7 @@ export default class FormControlled extends Component {
             nextSubmitting &&
             !this.hasErrors(nextProps, nextState)
         ) {
-            nextOnSubmit();
+            nextOnSubmit(this.getFieldValues(nextState));
             this.setState({initialSubmit: false});
         }
     }

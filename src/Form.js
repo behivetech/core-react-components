@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default class Form extends Component {
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         this.props.onSubmit(event);

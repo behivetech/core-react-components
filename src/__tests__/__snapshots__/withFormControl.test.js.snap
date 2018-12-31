@@ -9,34 +9,24 @@ exports[`withFormControl should pass fromState to the warapped component 1`] = `
     className="mock-class"
     name="mockName"
   >
-    <Consumer>
-      <MockComponentWrapped
-        className="mock-class"
-        formState={
-          Object {
-            "getFieldError": [MockFunction],
-            "getFieldValue": [MockFunction],
-            "setFieldValidators": [MockFunction],
-            "setFieldValue": [MockFunction],
-            "setFieldValueDebounced": [MockFunction],
-            "shouldDisable": [MockFunction] {
-              "calls": Array [
-                Array [],
-              ],
-              "results": Array [
-                Object {
-                  "isThrow": false,
-                  "value": undefined,
-                },
-              ],
-            },
-          }
+    <MockComponentWrapped
+      className="mock-class"
+      formState={
+        Object {
+          "getFieldValue": [Function],
+          "getFieldValues": [Function],
+          "getInitialSubmit": [Function],
+          "setFieldError": [Function],
+          "setFieldValue": [Function],
+          "setFieldValueDebounced": [Function],
+          "shouldDisable": [Function],
+          "unsetFieldError": [Function],
         }
-        name="mockName"
-      >
-        <div />
-      </MockComponentWrapped>
-    </Consumer>
+      }
+      name="mockName"
+    >
+      <div />
+    </MockComponentWrapped>
   </FormFieldControlled>
 </MockComponent>
 `;
