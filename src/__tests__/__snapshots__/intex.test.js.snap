@@ -6,6 +6,7 @@ Array [
   "Checkbox",
   "CheckboxControlled",
   "Form",
+  "FormControlled",
   "Switch",
   "SwitchControlled",
   "TextField",
