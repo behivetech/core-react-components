@@ -20,6 +20,8 @@ export default class TextField extends Component {
     }
 
     componentDidMount() {
+        console.log(this.inputRef)
+
         if (this.props.autoFocus) {
             // this.inputRef.current.focus();
         }
@@ -73,7 +75,7 @@ export default class TextField extends Component {
                         id={id || name}
                         name={name || id}
                         onChange={this.handleOnChange}
-                        ref={(input) => this.inputRef = input}
+                        ref={this.inputRef}
                         type={type}
                         value={this.state.value}
                         {...inputProps}
