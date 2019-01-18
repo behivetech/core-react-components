@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {pick} from 'lodash';
@@ -15,12 +15,12 @@ export default class TextField extends Component {
     constructor(props) {
         super(props);
         this.state = {value: this.props.value};
-        this.inputRef = null;
+        this.inputRef = createRef();
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
     componentDidMount() {
-        console.log(this.inputRef)
+        console.log(this.inputRef); // Returns null
 
         if (this.props.autoFocus) {
             // this.inputRef.current.focus();
