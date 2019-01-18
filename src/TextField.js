@@ -17,7 +17,6 @@ export default class TextField extends Component {
         this.state = {value: this.props.value};
         this.inputRef = null;
         this.handleOnChange = this.handleOnChange.bind(this);
-        this.handleValueChange = this.handleValueChange.bind(this);
     }
 
     componentDidMount() {
