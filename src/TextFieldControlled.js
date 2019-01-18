@@ -78,7 +78,7 @@ TextFieldControlled.propTypes = {
     /** Callback function for additional functionality when the component has a change */
     onChange: PropTypes.func,
     validate: PropTypes.oneOfType([
-        PropTypes.string,
+        PropTypes.array,
         PropTypes.func,
     ]),
     /** Value of the component when it is checked. Defaults to true/false if nothing is set */
