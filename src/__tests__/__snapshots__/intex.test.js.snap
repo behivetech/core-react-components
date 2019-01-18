@@ -4,9 +4,12 @@ exports[`index should contain all of the components 1`] = `
 Array [
   "Button",
   "Checkbox",
+  "ButtonSubmitControlled",
   "CheckboxControlled",
   "Form",
   "FormControlled",
+  "Select",
+  "SelectControlled",
   "Switch",
   "SwitchControlled",
   "TextField",

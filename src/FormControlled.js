@@ -13,13 +13,13 @@ import {
 import Form from './Form';
 
 const DEFAULT_CONTEXT = {
+    formDisabled: false,
     getFieldValue: noop,
     getFieldValues: noop,
-    getInitialSubmit: noop,
+    initialSubmit: false,
     setFieldError: noop,
     setFieldValue: noop,
     setFieldValueDebounced: noop,
-    shouldDisable: noop,
     unsetFieldError: noop,
 };
 
@@ -29,64 +29,18 @@ export default class FormControlled extends Component {
     constructor(props) {
         super(props);
 
-        this.getFieldValue = (fieldName) => {
-            return this.state.fieldValues[fieldName];
-        };
-
-        this.getFieldValues = (state = this.state) => {
-            return state.fieldValues;
-        };
-
-        this.getInitialSubmit = () => {
-            return this.state.initialSubmit;
-        };
-
-        this.setFieldError = (fieldName) => {
-            this.setState({fieldErrors: union(this.state.fieldErrors, [fieldName])});
-        };
-
-        this.unsetFieldError = (fieldName) => {
-            this.setState({fieldErrors: difference(this.state.fieldErrors, [fieldName])});
-        };
-
-        this.setFieldValue = (fieldName, value) => {
-            if (fieldName && value !== this.getFieldValue(fieldName)) {
-                this.setState({
-                    fieldValues: {
-                        ...this.state.fieldValues,
-                        [fieldName]: value,
-                    },
-                });
-            }
-        };
-
-        this.shouldDisable = () => {
-            return (this.state.submitting);
-        };
-
-        this.setFieldValueDebounced = debounce(this.setFieldValue, 300, {trailing: true});
-
         this.state = {
-            context: {
-                getFieldValue: this.getFieldValue,
-                getFieldValues: this.getFieldValues,
-                getInitialSubmit: this.getInitialSubmit,
-                setFieldError: this.setFieldError,
-                setFieldValue: this.setFieldValue,
-                setFieldValueDebounced: this.setFieldValueDebounced,
-                shouldDisable: this.shouldDisable,
-                unsetFieldError: this.unsetFieldError,
-            },
+            formDisabled: this.props.disabled,
+            initialSubmit: false,
             fieldErrors: [],
             fieldValues: {},
-            initialSubmit: false,
             submitting: false,
         };
-
+        this.setFieldValueDebounced = debounce(this.setFieldValue, 300, {trailing: true});
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const {fieldValues} = this.props;
 
         if (fieldValues) {
@@ -94,48 +48,82 @@ export default class FormControlled extends Component {
         }
     }
 
-    componentWillReceiveProps({submitted: nextSubmitted}) {
-        if (!this.props.submitted && nextSubmitted) {
-            this.setState({submitting: false});
-            // Do something once form has been submitted
+    getFieldValue(fieldName) {
+        return this.state.fieldValues[fieldName];
+    }
+
+    getFieldValues() {
+        return this.state.fieldValues;
+    }
+
+    setFieldError(fieldName) {
+        this.setState({fieldErrors: union(this.state.fieldErrors, [fieldName])});
+    }
+
+    unsetFieldError(fieldName) {
+        this.setState({fieldErrors: difference(this.state.fieldErrors, [fieldName])});
+    }
+
+    setFieldValue(fieldName, value) {
+        if (fieldName && value !== this.getFieldValue(fieldName)) {
+            this.setState({
+                fieldValues: {
+                    ...this.state.fieldValues,
+                    [fieldName]: value,
+                },
+            });
         }
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        const {submitting} = this.state;
-        const {submitting: nextSubmitting} = nextState;
-        const {onSubmit: nextOnSubmit} = nextProps;
-
-        if (
-            !submitting &&
-            nextSubmitting &&
-            !this.hasErrors(nextProps, nextState)
-        ) {
-            nextOnSubmit(this.getFieldValues(nextState));
-            this.setState({initialSubmit: false});
-        }
-    }
-
-    hasErrors(props = this.props, state = this.state) {
-        return (!!state.fieldErrors.length || !!props.formError);
+    hasErrors() {
+        return (!!this.state.fieldErrors.length || !!this.props.formError);
     }
 
     handleSubmit(event) {
-        this.setState({initialSubmit: true, submitting: true});
+        this.setState({initialSubmit: true});
+
+        if (!this.hasErrors()) {
+            this.setState({
+                formDisabled: true,
+                submitting: true,
+            });
+
+            this.props.onSubmit(this.state.fieldValues, this.handleSubmitted);
+        }
     }
 
+    handleSubmitted() {
+        this.setState({
+            formDisabled: false,
+            submitting: false,
+        });
+    }
+
+
     render() {
-        const {children, className, id, name} = this.props;
+        const {children, className, formError, id, name} = this.props;
+        const {formDisabled, initialSubmit} = this.state;
+        const formContext = {
+            formDisabled,
+            initialSubmit,
+            getFieldValue: this.getFieldValue.bind(this),
+            getFieldValues: this.getFieldValues.bind(this),
+            setFieldError: this.setFieldError.bind(this),
+            setFieldValue: this.setFieldValue.bind(this),
+            setFieldValueDebounced: this.setFieldValueDebounced.bind(this),
+            unsetFieldError: this.unsetFieldError.bind(this),
+        };
 
         return (
-            <FormContext.Provider value={this.state.context}>
-                <Form 
-                    className={classnames('form-controlled', className)} 
+            <FormContext.Provider value={formContext}>
+                <Form
+                    className={classnames('form-controlled', className)}
                     id={id}
-                    name={name} 
+                    name={name}
                     onSubmit={this.handleSubmit}
                 >
                     {children}
+                    {(formError) ? <div>{formError}</div> : null}
                 </Form>
             </FormContext.Provider>
         );
@@ -147,6 +135,8 @@ FormControlled.propTypes = {
     children: PropTypes.node,
     /** Used to add attitional styling from parent component */
     className: PropTypes.string,
+    /** Disable all elements of the form */
+    disabled: PropTypes.bool,
     /** Any form type errors to help with it submitting and showing errors */
     formError: PropTypes.string,
     /**
@@ -176,10 +166,9 @@ FormControlled.propTypes = {
         such as passsing validation tests.
     */
     onSubmit: PropTypes.func,
-    /** Indicates if the form was submitted and a response came back */
-    submitted: PropTypes.bool,
 };
 
 FormControlled.defaultProps = {
+    disabled: false,
     onSubmit: noop,
 };

@@ -13,6 +13,7 @@ exports[`withSwitchControl should render a component and correct props are set 1
       className="mock-class"
       formState={
         Object {
+          "formDisabled": false,
           "getFieldError": [MockFunction],
           "getFieldValue": [MockFunction] {
             "calls": Array [
@@ -27,6 +28,7 @@ exports[`withSwitchControl should render a component and correct props are set 1
               },
             ],
           },
+          "initialSubmit": false,
           "setFieldValidators": [MockFunction],
           "setFieldValue": [MockFunction],
           "setFieldValueDebounced": [MockFunction],
@@ -37,15 +39,19 @@ exports[`withSwitchControl should render a component and correct props are set 1
       onChange={[Function]}
       value={true}
     >
-      <MockComponentWrapped
-        checked={false}
-        className="mock-class"
-        name="mockName"
-        onChange={[Function]}
-        value={true}
+      <div
+        className="mdc-form-field mock-class"
       >
-        <div />
-      </MockComponentWrapped>
+        <MockComponentWrapped
+          checked={false}
+          className="mock-class"
+          name="mockName"
+          onChange={[Function]}
+          value={true}
+        >
+          <div />
+        </MockComponentWrapped>
+      </div>
     </SwitchControlled>
   </FormFieldControlled>
 </MockComponent>

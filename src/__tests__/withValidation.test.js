@@ -14,7 +14,7 @@ describe('withValidation', () => {
                 getFieldValues: jest.fn(() => {
                     return {mockField: 'mock value'};
                 }),
-                getInitialSubmit: jest.fn(() => initialSubmit),
+                initialSubmit,
                 setFieldError: jest.fn(),
                 unsetFieldError: jest.fn(),
             },
@@ -32,9 +32,14 @@ describe('withValidation', () => {
     it('should render component and run validations on mount', () => {
         const mockProps = getProps();
         const wrapper = mount(<MockComponent {...mockProps} value="mock value" />);
-
         expect(wrapper).toMatchSnapshot();
-        expect(mockProps.validate[0]).toBeCalledWith('mock value', {mockField: 'mock value'})
+        expect(mockProps.validate[0]).toBeCalledWith('mock value', {mockField: 'mock value'});
+    });
+
+    it('should set default props', () => {
+        const wrapper = shallow(<MockComponent {...getProps()} onChange={undefined} />).dive();
+
+        expect(wrapper.instance().props.onChange()).toBe(null);
     });
 
     it('should validate with an imported validation function and error should be null', () => {
@@ -45,6 +50,20 @@ describe('withValidation', () => {
         expect(wrapper.state().fieldError).toBe('This field cannot be empty');
         expect(wrapper.props().error).toBe(null);
         expect(mockProps.formState.setFieldError).toBeCalledWith(mockProps.name);
+    });
+
+    it('should validate when updateValidation prop has changed', () => {
+        const mockProps = getProps({validate: ['required']});
+        const wrapper = shallow(<MockComponent {...mockProps} />).dive();
+        const wrapperInstance = wrapper.instance();
+        const mockValidateField = jest.fn();
+
+        wrapperInstance.validateField = mockValidateField;
+        wrapper.setProps({updateValidation: 'new value', value: 'new value'});
+        expect(mockValidateField).toBeCalledWith('new value');
+        jest.clearAllMocks();
+        wrapper.setProps({updateValidation: 'new value', value: 'new value 2'});
+        expect(mockValidateField).not.toBeCalled();
     });
 
     it('should return an error if the imported validation function does not exist', () => {

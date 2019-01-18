@@ -1,79 +1,58 @@
 // Vendor Libs
-import React, {createRef} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import {MDCSwitch} from '@material/switch';
-import {MDCFormField} from '@material/form-field';
 
 // Components
-import Checkbox from './Checkbox';
+import MdcSwitch from '@material/react-switch';
 
 // Styles
+import '@material/react-switch/index.scss';
 import './Switch.scss';
 
-export default class Switch extends Checkbox {
+export default class Switch extends Component {
     constructor(props) {
         super(props);
-        this.switchRef = createRef();
-        this.formFieldRef = createRef();
+        this.state = {
+            checked: props.checked,
+            indeterminate: false,
+        };
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount() {
-        const checkbox = new MDCSwitch(this.switchRef.current);
-        const formField = new MDCFormField(this.formFieldRef.current);
-
-        formField.input = checkbox;
+    UNSAFE_componentWillReceiveProps({checked: nextChecked}) {
+        if (this.state.checked !== nextChecked) {
+            this.setState({checked: nextChecked});
+        }
     }
 
-    getSwitchClass() {
-        const {checked, className, disabled} = this.props;
-
-        return classnames({
-            'mdc-switch': true,
-            'mdc-switch--disabled': disabled,
-            'mdc-switch--checked': checked,
-        }, className);
+    handleChange(event) {
+        event.stopPropagation();
+        this.setState({
+            checked: event.target.checked,
+            indeterminate: event.target.indeterminate,
+        });
+        this.props.onChange(event);
     }
 
     render() {
         const {
-            className,
             disabled,
             id,
-            label,
             name,
             value,
         } = this.props;
 
         return (
-            <div className={classnames('switch', className)}>
-                <div className="mdc-form-field" ref={this.formFieldRef}>
-                    <div className={this.getSwitchClass()} ref={this.switchRef}>
-                        <div className="mdc-switch__track" />
-                        <div className="mdc-switch__thumb-underlay">
-                            <div className="mdc-switch__thumb">
-                                <input
-                                    checked={this.state.checked}
-                                    className="mdc-switch__native-control"
-                                    disabled={disabled}
-                                    id={id || name}
-                                    name={name || id}
-                                    onChange={this.handleChange}
-                                    role="switch"
-                                    type="checkbox"
-                                    value={value}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                {
-                    (label)
-                        ? <label htmlFor={id || name}>{label}</label>
-                        : null
-                }
-                </div>
-            </div>
+            <React.Fragment>
+                <MdcSwitch
+                    className="switch"
+                    disabled={disabled}
+                    id={id || name}
+                    name={name || id}
+                    onChange={this.handleChange}
+                    value={value}
+                />
+            </React.Fragment>
         );
     }
 }
@@ -87,8 +66,6 @@ Switch.propTypes = {
     disabled: PropTypes.bool,
     /** The id attribute for the input of the checkbox */
     id: PropTypes.string,
-    /** the label to be shown with the checkbox */
-    label: PropTypes.string,
     /** The name attribute for the input of the checkbox */
     name: PropTypes.string,
     /**

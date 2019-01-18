@@ -1,11 +1,12 @@
 // Vendor Libs
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 // Components
 import {FormContext} from './FormControlled';
 
 export default function (WrappedComponent) {
-    return class FormFieldControlled extends Component {
+    class FormFieldControlled extends Component {
         constructor(props) {
             super(props);
             this.renderChild = this.renderChild.bind(this);
@@ -16,7 +17,7 @@ export default function (WrappedComponent) {
                 <WrappedComponent
                     {...this.props}
                     formState={formState}
-                    disabled={formState.shouldDisable() || this.props.disabled}
+                    disabled={formState.formDisabled || this.props.disabled}
                 />
             );
         }
@@ -28,6 +29,13 @@ export default function (WrappedComponent) {
                 </FormContext.Consumer>
             );
         }
+    }
+
+    FormFieldControlled.propTypes = {
+        /** disables the field */
+        disabled: PropTypes.bool,
     };
+
+    return FormFieldControlled;
 }
 

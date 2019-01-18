@@ -16,21 +16,19 @@ describe('FormControlled', () => {
     it('should render with the correct state and props', () => {
         const mockProps = {fieldValues: {mockField: 'mock value'}};
         const wrapper = mount(<FormControlled {...getProps(mockProps)} />);
-        const {context, fieldValues} = wrapper.state();
 
         expect(wrapper).toMatchSnapshot();
-        expect(fieldValues).toEqual(mockProps.fieldValues);
-        expect(context).toMatchSnapshot();
+        expect(wrapper.state()).toMatchSnapshot();
     });
 
     it('should set and unset a field error', () => {
         const wrapper = shallow(<FormControlled {...getProps()} />);
-        const wrapperStateContext = wrapper.state().context;
+        const wrapperInstance = wrapper.instance();
 
-        wrapperStateContext.setFieldError('mockField1');
-        expect(wrapper.state().fieldErrors[0]).toBe('mockField1');
-        wrapperStateContext.unsetFieldError('mockField1');
-        expect(wrapper.state().fieldErrors.length).toBe(0);
+        wrapperInstance.setFieldError('mockField1');
+        expect(wrapperInstance.state.fieldErrors[0]).toBe('mockField1');
+        wrapperInstance.unsetFieldError('mockField1');
+        expect(wrapperInstance.state.fieldErrors.length).toBe(0);
     });
 
     it('should show if there are errors or not', () => {
@@ -53,13 +51,13 @@ describe('FormControlled', () => {
     it('should or should not set a field value when conditions are met', () => {
         const mockProps = getProps({fieldValues: {mockField: 'mock value'}});
         const wrapper = shallow(<FormControlled {...mockProps} />);
-        const wrapperStateContext = wrapper.state().context;
+        const wrapperInstance = wrapper.instance();
         const mockSetState = jest.fn();
 
-        wrapper.instance().setState = mockSetState;
-        wrapperStateContext.setFieldValue('mockField', 'mock value');
+        wrapperInstance.setState = mockSetState;
+        wrapperInstance.setFieldValue('mockField', 'mock value');
         expect(mockSetState).not.toHaveBeenCalled();
-        wrapperStateContext.setFieldValue('mockField', 'mock value 1');
+        wrapperInstance.setFieldValue('mockField', 'mock value 1');
         expect(mockSetState).toHaveBeenCalledWith(
             {fieldValues: {mockField: 'mock value 1'}}
         );
@@ -67,51 +65,34 @@ describe('FormControlled', () => {
 
     it('should handle a submit correctly', () => {
         const mockEvent = {preventDefault: jest.fn()};
-        const props = getProps({onSubmit: jest.fn()});
-        const wrapper = shallow(<FormControlled {...props} />);
+        const mockProps = getProps({onSubmit: jest.fn()});
+        const wrapper = shallow(<FormControlled {...mockProps} />);
         const wrapperInstance = wrapper.instance();
+        const initialState = wrapperInstance.state;
 
         wrapperInstance.handleSubmit(mockEvent);
-        expect(wrapper.state().initialSubmit).toBe(true);
-        expect(props.onSubmit).toHaveBeenCalled();
-        wrapperInstance.forceUpdate();
-        expect(wrapper.state().initialSubmit).toBe(false);
-        
+        expect(wrapperInstance.state.formDisabled).toBe(true);
+        expect(wrapperInstance.state.initialSubmit).toBe(true);
+        expect(wrapperInstance.state.submitting).toBe(true);
+        expect(mockProps.onSubmit).toBeCalled();
+
+        wrapper.setState(initialState);
         jest.clearAllMocks();
         wrapperInstance.setFieldError('mockField');
         wrapperInstance.handleSubmit(mockEvent);
-        expect(wrapper.state().initialSubmit).toBe(true);
-        expect(props.onSubmit).not.toHaveBeenCalled();
-        wrapperInstance.forceUpdate();
-        expect(wrapper.state().initialSubmit).toBe(true);
+        expect(wrapperInstance.state.formDisabled).toBe(false);
+        expect(wrapperInstance.state.initialSubmit).toBe(true);
+        expect(wrapperInstance.state.submitting).toBe(false);
+        expect(mockProps.onSubmit).not.toHaveBeenCalled();
 
+        wrapper.setState(initialState);
         jest.clearAllMocks();
-        wrapperInstance.setFieldError('mockField');
         wrapper.setProps({formError: 'mock form error'});
         wrapperInstance.handleSubmit(mockEvent);
-        expect(wrapper.state().initialSubmit).toBe(true);
-        expect(props.onSubmit).not.toHaveBeenCalled();
-        wrapperInstance.forceUpdate();
-        expect(wrapper.state().initialSubmit).toBe(true);
-    });
-
-    it('should return disabled when submitting', () => {
-        const wrapper = shallow(<FormControlled {...getProps()} />);
-
-        expect(wrapper.instance().shouldDisable()).toBe(false);
-        wrapper.setState({submitting: true});
-        expect(wrapper.instance().shouldDisable()).toBe(true);
-    });
-
-    it('should set submitting to false if submitted is true', () => {
-        const mockSetState = jest.fn();
-        const wrapper = shallow(<FormControlled {...getProps()} />);
-
-        wrapper.instance().setState = mockSetState;
-        wrapper.setProps({submitted: true});
-        expect(mockSetState).toHaveBeenCalledWith({submitting: false});
-        wrapper.setProps({submitted: true});
-        expect(mockSetState.mock.calls.length).toBe(1);
+        expect(wrapperInstance.state.formDisabled).toBe(false);
+        expect(wrapperInstance.state.initialSubmit).toBe(true);
+        expect(wrapperInstance.state.submitting).toBe(false);
+        expect(mockProps.onSubmit).not.toHaveBeenCalled();
     });
 
     it('should return the right values from the context state', () => {
@@ -124,6 +105,6 @@ describe('FormControlled', () => {
         wrapper.setState(mockStateValues);
         expect(wrapperInstance.getFieldValue('mockField')).toBe('mock value');
         expect(wrapperInstance.getFieldValues()).toBe(mockStateValues.fieldValues);
-        expect(wrapperInstance.getInitialSubmit()).toBe(false);
+        expect(wrapperInstance.state.initialSubmit).toBe(false);
     });
 });

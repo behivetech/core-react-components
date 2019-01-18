@@ -1,0 +1,20 @@
+.select {
+	
+	&__native-control {
+		visibility: hidden;
+	}
+
+	&--full-width {
+		display: block;
+	}
+
+	&--show-native-control {
+
+		.select {
+
+			&__native-control {
+				visibility: visible;
+			}
+		}
+	}
+}

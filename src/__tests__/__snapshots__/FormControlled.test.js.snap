@@ -3,6 +3,7 @@
 exports[`FormControlled should render with the correct state and props 1`] = `
 <FormControlled
   className="mock-class"
+  disabled={false}
   fieldValues={
     Object {
       "mockField": "mock value",
@@ -27,13 +28,12 @@ exports[`FormControlled should render with the correct state and props 1`] = `
 
 exports[`FormControlled should render with the correct state and props 2`] = `
 Object {
-  "getFieldValue": [Function],
-  "getFieldValues": [Function],
-  "getInitialSubmit": [Function],
-  "setFieldError": [Function],
-  "setFieldValue": [Function],
-  "setFieldValueDebounced": [Function],
-  "shouldDisable": [Function],
-  "unsetFieldError": [Function],
+  "fieldErrors": Array [],
+  "fieldValues": Object {
+    "mockField": "mock value",
+  },
+  "formDisabled": false,
+  "initialSubmit": false,
+  "submitting": false,
 }
 `;

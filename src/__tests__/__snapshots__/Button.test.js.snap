@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button should render with the correct props 1`] = `
-<WithRipple(Button)
+<RippledComponent
   className="button"
-  dense={false}
   disabled={false}
-  icon={null}
   initRipple={[Function]}
   onBlur={[Function]}
   onClick={[Function]}
@@ -16,23 +14,18 @@ exports[`Button should render with the correct props 1`] = `
   onMouseUp={[Function]}
   onTouchEnd={[Function]}
   onTouchStart={[Function]}
-  outlined={false}
-  raised={false}
   style={Object {}}
   type="button"
   unbounded={false}
-  unelevated={false}
 >
   button
-</WithRipple(Button)>
+</RippledComponent>
 `;
 
 exports[`Button should render with the correct props 2`] = `
-<WithRipple(Button)
+<RippledComponent
   className="button mockClass"
-  dense={false}
   disabled={false}
-  icon={null}
   initRipple={[Function]}
   onBlur={[Function]}
   onClick={[Function]}
@@ -43,23 +36,18 @@ exports[`Button should render with the correct props 2`] = `
   onMouseUp={[Function]}
   onTouchEnd={[Function]}
   onTouchStart={[Function]}
-  outlined={false}
-  raised={false}
   style={Object {}}
   type="button"
   unbounded={false}
-  unelevated={false}
 >
   mock child
-</WithRipple(Button)>
+</RippledComponent>
 `;
 
 exports[`Button should render with the correct props 3`] = `
-<WithRipple(Button)
+<RippledComponent
   className="button mockClass"
-  dense={false}
   disabled={false}
-  icon={null}
   initRipple={[Function]}
   onBlur={[Function]}
   onClick={[Function]}
@@ -70,13 +58,10 @@ exports[`Button should render with the correct props 3`] = `
   onMouseUp={[Function]}
   onTouchEnd={[Function]}
   onTouchStart={[Function]}
-  outlined={false}
-  raised={false}
   style={Object {}}
   type="submit"
   unbounded={false}
-  unelevated={false}
 >
   submit
-</WithRipple(Button)>
+</RippledComponent>
 `;

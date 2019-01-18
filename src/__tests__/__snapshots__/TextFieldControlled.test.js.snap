@@ -5,8 +5,10 @@ exports[`TextFieldControlled should render with the correct props 1`] = `
   className="mock-class"
   formState={
     Object {
+      "formDisabled": false,
       "getFieldError": [MockFunction],
       "getFieldValue": [MockFunction],
+      "initialSubmit": false,
       "setFieldValidators": [MockFunction],
       "setFieldValue": [MockFunction],
       "setFieldValueDebounced": [MockFunction],
@@ -16,7 +18,7 @@ exports[`TextFieldControlled should render with the correct props 1`] = `
   label="mock-label"
   name="mockName"
   onChange={[Function]}
-  value=""
+  value="mock value"
 />
 `;
 
@@ -26,13 +28,39 @@ exports[`TextFieldControlled should render with the correct props 2`] = `
   label="mock-label"
   name="mockName"
   onChange={[Function]}
-  value=""
+  value="mock value"
 />
 `;
 
 exports[`TextFieldControlled should render with the correct props 3`] = `
-<TextField
+<FormFieldValidation
   className="mock-class"
+  component={[Function]}
+  formState={
+    Object {
+      "formDisabled": false,
+      "getFieldError": [MockFunction],
+      "getFieldValue": [MockFunction],
+      "initialSubmit": false,
+      "setFieldValidators": [MockFunction],
+      "setFieldValue": [MockFunction] {
+        "calls": Array [
+          Array [
+            "mockName",
+            "mock value",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+      "setFieldValueDebounced": [MockFunction],
+      "shouldDisable": [MockFunction],
+    }
+  }
   label="mock-label"
   name="mockName"
   onChange={[Function]}
@@ -41,6 +69,6 @@ exports[`TextFieldControlled should render with the correct props 3`] = `
       "mockValidate": [MockFunction],
     }
   }
-  value=""
+  value="mock value"
 />
 `;

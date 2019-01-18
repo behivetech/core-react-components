@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextFieldValidated should render with the correct props 1`] = `
+<TextFieldValidated
+  className="mock-class"
+  component={[Function]}
+  label="mock-label"
+  name="mockName"
+  validate={
+    Array [
+      [MockFunction],
+    ]
+  }
+/>
+`;
+
+exports[`TextFieldValidated should render with the correct props 2`] = `
+<mockComponent
+  className="text-field-validated mock-class"
+  component={[Function]}
+  label="mock-label"
+  name="mockName"
+  validate={
+    Array [
+      [MockFunction],
+    ]
+  }
+/>
+`;

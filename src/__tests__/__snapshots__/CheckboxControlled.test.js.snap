@@ -5,8 +5,10 @@ exports[`CheckboxControlled should render with the correct props 1`] = `
   className="mock-class"
   formState={
     Object {
+      "formDisabled": false,
       "getFieldError": [MockFunction],
       "getFieldValue": [MockFunction],
+      "initialSubmit": false,
       "setFieldValidators": [MockFunction],
       "setFieldValue": [MockFunction],
       "setFieldValueDebounced": [MockFunction],

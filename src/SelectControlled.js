@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import {omit} from 'lodash';
 
 // Components
-import TextField from './TextField';
-import TextFieldValidated from './TextFieldValidated';
+import Select from './Select';
 import withFormControl from './withFormControl';
 
-class TextFieldControlled extends Component {
+class SelectControlled extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,23 +18,9 @@ class TextFieldControlled extends Component {
 
     componentDidMount() {
         const {formState, name, value} = this.props;
-
+        
         if (value) {
             formState.setFieldValue(name, value);
-        }
-    }
-
-    UNSAFE_componentWillUpdate({value: nextPropsValue}, {value: nextStateValue}) {
-        const {name, formState, value} = this.props;
-
-        if (
-            value !== nextPropsValue &&
-            nextPropsValue !== nextStateValue &&
-            this.state.value === nextStateValue
-        ) {
-            this.setState({value: nextPropsValue}, () => {
-                formState.setFieldValue(name, nextPropsValue);
-            });
         }
     }
 
@@ -43,10 +28,9 @@ class TextFieldControlled extends Component {
         const value = event.target.value;
         const {name, onChange, formState} = this.props;
 
-        this.setState({value: value}, () => {
-            formState.setFieldValueDebounced(name, value);
-            onChange(event);
-        });
+        this.setState({value: value});
+        formState.setFieldValue(name, value);
+        onChange(event);
     }
 
     render() {
@@ -54,33 +38,23 @@ class TextFieldControlled extends Component {
             onChange: this.handleChange,
             value: this.state.value,
         };
-
-        return (this.props.validate)
-            ? <TextFieldValidated {...this.props} {...props} component={TextField} />
-            : <TextField {...omit(this.props, ['formState'])} {...props} />;
+        
+        return <Select {...omit(this.props, ['formState'])} {...props} />;
     }
 
 }
 
-TextFieldControlled.propTypes = {
+SelectControlled.propTypes = {
     formState: PropTypes.shape({
         /** Gets the field value from the FormControlled component */
         getFieldValue: PropTypes.func.isRequired,
         /** Sets the field value in the FormControlled to be a part of the JSON that will be pushed. */
         setFieldValue: PropTypes.func.isRequired,
-        /** Same as setFieldValue, but deboinces the onChange events. */
-        setFieldValueDebounced: PropTypes.func.isRequired,
     }),
-    /** Function passed in from withValidation that handles validation of field. */
-    handleValidate: PropTypes.func,
     /** Name of the field. Required to be used as a key as part of the JSON that will be pushed */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired, 
     /** Callback function for additional functionality when the component has a change */
     onChange: PropTypes.func,
-    validate: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.func,
-    ]),
     /** Value of the component when it is checked. Defaults to true/false if nothing is set */
     value: PropTypes.oneOfType([
         PropTypes.bool,
@@ -89,10 +63,10 @@ TextFieldControlled.propTypes = {
     ]),
 };
 
-TextFieldControlled.defaultProps = {
+SelectControlled.defaultProps = {
     onChange: () => null,
     value: '',
 };
 
 
-export default withFormControl(TextFieldControlled);
+export default withFormControl(SelectControlled);

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import {pick} from 'lodash';
 import MdcTextField, {Input} from '@material/react-text-field';
 
 // Components
@@ -8,12 +9,21 @@ import FormFieldHelperText from './FormFieldHelperText';
 
 // Styles
 import '@material/react-text-field/index.scss';
+import './TextField.scss';
 
 export default class TextField extends Component {
     constructor(props) {
         super(props);
         this.state = {value: this.props.value};
+        this.inputRef = null;
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleValueChange = this.handleValueChange.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.props.autoFocus) {
+            // this.inputRef.current.focus();
+        }
     }
 
     handleOnChange(event) {
@@ -22,33 +32,63 @@ export default class TextField extends Component {
         this.props.onChange(event);
     }
 
+    getClass() {
+        const {className, fullWidth} = this.props;
+
+        return classnames({
+            'text-field': true,
+            'text-field--full-width': fullWidth,
+        }, className);
+    }
+
     render() {
         const {
-            className,
+            disabled,
             error,
             helperText,
+            id,
             inputProps,
-            label,
+            name,
+            type,
         } = this.props;
 
         return (
-            <div className={classnames('text-field', className)}>
+            <React.Fragment>
                 <MdcTextField
-                    label={label}
+                    {...pick(this.props, [
+                        'disabled',
+                        'label',
+                        'floatingLabelClassName',
+                        'isRtl',
+                        'leadingIcon',
+                        'trailingIcon',
+                        'lineRippleClassName',
+                        'notchedOutlineClassName',
+                        'outlined',
+                        'textarea',
+                    ])}
+                    className={this.getClass()}
                 >
                     <Input
+                        disabled={disabled}
+                        id={id || name}
+                        name={name || id}
                         onChange={this.handleOnChange}
+                        ref={(input) => this.inputRef = input}
+                        type={type}
                         value={this.state.value}
                         {...inputProps}
                     />
                 </MdcTextField>
                 <FormFieldHelperText error={error} helperText={helperText} />
-            </div>
+            </React.Fragment>
         );
     }
 }
 
 TextField.propTypes = {
+    /** Focuses on field on load if set */
+    autoFocus: PropTypes.bool,
     /** Ability to add additional className to the component for addistional styling from parent */
     className: PropTypes.string,
     /** sets the state of the checkbox to disabled */
@@ -118,6 +158,8 @@ TextField.propTypes = {
     textarea: PropTypes.bool,
     /** An icon element that appears as the trailing icon. */
     trailingIcon: PropTypes.node,
+    /** type attribute for the input field */
+    type: PropTypes.string,
     /** The value attribute for the input element */
     value: PropTypes.oneOfType([
         PropTypes.bool,

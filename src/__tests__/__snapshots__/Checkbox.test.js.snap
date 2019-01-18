@@ -1,230 +1,145 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox should render as checked 1`] = `
-<div
-  className="checkbox"
->
-  <div
-    className="mdc-form-field"
-  >
-    <div
-      className="mdc-checkbox"
-    >
-      <input
-        className="mdc-checkbox__native-control"
-        id="mockName"
-        type="checkbox"
-      />
-      <div
-        className="mdc-checkbox__background"
-      >
-        <svg
-          className="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24"
-        >
-          <path
-            className="mdc-checkbox__checkmark-path"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"
-            fill="none"
-          />
-        </svg>
-        <div
-          className="mdc-checkbox__mixedmark"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+<Fragment>
+  <RippledComponent
+    checked={true}
+    className="checkbox"
+    disabled={false}
+    indeterminate={false}
+    name="mockName"
+    nativeControlId="mockName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+    unbounded={true}
+  />
+</Fragment>
 `;
 
 exports[`Checkbox should render as disabled 1`] = `
-<div
-  className="checkbox"
->
-  <div
-    className="mdc-form-field"
-  >
-    <div
-      className="mdc-checkbox mdc-checkbox--disabled"
-    >
-      <input
-        className="mdc-checkbox__native-control"
-        disabled={true}
-        id="mockName"
-        type="checkbox"
-      />
-      <div
-        className="mdc-checkbox__background"
-      >
-        <svg
-          className="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24"
-        >
-          <path
-            className="mdc-checkbox__checkmark-path"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"
-            fill="none"
-          />
-        </svg>
-        <div
-          className="mdc-checkbox__mixedmark"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+<Fragment>
+  <RippledComponent
+    checked={true}
+    className="checkbox"
+    disabled={true}
+    indeterminate={false}
+    name="mockName"
+    nativeControlId="mockName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+    unbounded={true}
+  />
+</Fragment>
 `;
 
 exports[`Checkbox should render with a label 1`] = `
-<div
-  className="checkbox"
->
-  <div
-    className="mdc-form-field"
-  >
-    <div
-      className="mdc-checkbox mdc-checkbox--disabled"
-    >
-      <input
-        className="mdc-checkbox__native-control"
-        disabled={true}
-        id="mockName"
-        type="checkbox"
-      />
-      <div
-        className="mdc-checkbox__background"
-      >
-        <svg
-          className="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24"
-        >
-          <path
-            className="mdc-checkbox__checkmark-path"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"
-            fill="none"
-          />
-        </svg>
-        <div
-          className="mdc-checkbox__mixedmark"
-        />
-      </div>
-    </div>
-    <label
-      htmlFor="mockName"
-    >
-      mock label
-    </label>
-  </div>
-</div>
+<Fragment>
+  <RippledComponent
+    checked={false}
+    className="checkbox"
+    disabled={true}
+    indeterminate={false}
+    name="mockName"
+    nativeControlId="mockName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+    unbounded={true}
+  />
+</Fragment>
 `;
 
 exports[`Checkbox should render with the correct props 1`] = `
-<div
-  className="checkbox mock-class"
->
-  <div
-    className="mdc-form-field"
-  >
-    <div
-      className="mdc-checkbox"
-    >
-      <input
-        className="mdc-checkbox__native-control"
-        id="mockName"
-        type="checkbox"
-      />
-      <div
-        className="mdc-checkbox__background"
-      >
-        <svg
-          className="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24"
-        >
-          <path
-            className="mdc-checkbox__checkmark-path"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"
-            fill="none"
-          />
-        </svg>
-        <div
-          className="mdc-checkbox__mixedmark"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+<Fragment>
+  <RippledComponent
+    checked={false}
+    className="checkbox"
+    disabled={false}
+    indeterminate={false}
+    name="mockName"
+    nativeControlId="mockName"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+    unbounded={true}
+  />
+</Fragment>
 `;
 
 exports[`Checkbox should set the name and id props correctly 1`] = `
-<div
-  className="checkbox"
->
-  <div
-    className="mdc-form-field"
-  >
-    <div
-      className="mdc-checkbox"
-    >
-      <input
-        className="mdc-checkbox__native-control"
-        id="mockId"
-        type="checkbox"
-      />
-      <div
-        className="mdc-checkbox__background"
-      >
-        <svg
-          className="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24"
-        >
-          <path
-            className="mdc-checkbox__checkmark-path"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"
-            fill="none"
-          />
-        </svg>
-        <div
-          className="mdc-checkbox__mixedmark"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+<Fragment>
+  <RippledComponent
+    checked={false}
+    className="checkbox"
+    disabled={false}
+    indeterminate={false}
+    name="mockName"
+    nativeControlId="mockId"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+    unbounded={true}
+  />
+</Fragment>
 `;
 
 exports[`Checkbox should set the name and id props correctly 2`] = `
-<div
-  className="checkbox"
->
-  <div
-    className="mdc-form-field"
-  >
-    <div
-      className="mdc-checkbox"
-    >
-      <input
-        className="mdc-checkbox__native-control"
-        id="mockId"
-        type="checkbox"
-      />
-      <div
-        className="mdc-checkbox__background"
-      >
-        <svg
-          className="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24"
-        >
-          <path
-            className="mdc-checkbox__checkmark-path"
-            d="M1.73,12.91 8.1,19.28 22.79,4.59"
-            fill="none"
-          />
-        </svg>
-        <div
-          className="mdc-checkbox__mixedmark"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+<Fragment>
+  <RippledComponent
+    checked={false}
+    className="checkbox"
+    disabled={false}
+    indeterminate={false}
+    name="mockId"
+    nativeControlId="mockId"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    style={Object {}}
+    unbounded={true}
+  />
+</Fragment>
 `;

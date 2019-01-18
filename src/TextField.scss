@@ -1,6 +1,6 @@
-@import "@material/textfield/mdc-text-field";
-
 .text-field {
-    display: inline-block;
-    position: relative;
+	
+	&--full-width {
+		display: block;
+	}
 }

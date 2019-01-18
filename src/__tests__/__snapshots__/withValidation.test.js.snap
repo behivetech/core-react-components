@@ -18,22 +18,7 @@ exports[`withValidation should render component and run validations on mount 1`]
           },
         ],
       },
-      "getInitialSubmit": [MockFunction] {
-        "calls": Array [
-          Array [],
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": false,
-          },
-          Object {
-            "isThrow": false,
-            "value": false,
-          },
-        ],
-      },
+      "initialSubmit": false,
       "setFieldError": [MockFunction] {
         "calls": Array [
           Array [
@@ -91,22 +76,7 @@ exports[`withValidation should render component and run validations on mount 1`]
             },
           ],
         },
-        "getInitialSubmit": [MockFunction] {
-          "calls": Array [
-            Array [],
-            Array [],
-          ],
-          "results": Array [
-            Object {
-              "isThrow": false,
-              "value": false,
-            },
-            Object {
-              "isThrow": false,
-              "value": false,
-            },
-          ],
-        },
+        "initialSubmit": false,
         "setFieldError": [MockFunction] {
           "calls": Array [
             Array [
@@ -165,22 +135,7 @@ exports[`withValidation should render component and run validations on mount 1`]
               },
             ],
           },
-          "getInitialSubmit": [MockFunction] {
-            "calls": Array [
-              Array [],
-              Array [],
-            ],
-            "results": Array [
-              Object {
-                "isThrow": false,
-                "value": false,
-              },
-              Object {
-                "isThrow": false,
-                "value": false,
-              },
-            ],
-          },
+          "initialSubmit": false,
           "setFieldError": [MockFunction] {
             "calls": Array [
               Array [
@@ -234,22 +189,7 @@ exports[`withValidation should return an error if the imported validation functi
   formState={
     Object {
       "getFieldValues": [MockFunction],
-      "getInitialSubmit": [MockFunction] {
-        "calls": Array [
-          Array [],
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": false,
-          },
-          Object {
-            "isThrow": false,
-            "value": false,
-          },
-        ],
-      },
+      "initialSubmit": false,
       "setFieldError": [MockFunction] {
         "calls": Array [
           Array [
@@ -283,22 +223,7 @@ exports[`withValidation should validate with an imported validation function and
   formState={
     Object {
       "getFieldValues": [MockFunction],
-      "getInitialSubmit": [MockFunction] {
-        "calls": Array [
-          Array [],
-          Array [],
-        ],
-        "results": Array [
-          Object {
-            "isThrow": false,
-            "value": false,
-          },
-          Object {
-            "isThrow": false,
-            "value": false,
-          },
-        ],
-      },
+      "initialSubmit": false,
       "setFieldError": [MockFunction] {
         "calls": Array [
           Array [

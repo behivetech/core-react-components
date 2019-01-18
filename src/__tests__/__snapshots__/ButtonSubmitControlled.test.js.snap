@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonSubmitControlled should disable properly 1`] = `
+<Button
+  className="button-submit-controlled mock-class"
+  diabled={true}
+  disabled={false}
+  onClick={[Function]}
+  type="submit"
+/>
+`;
+
+exports[`ButtonSubmitControlled should disable properly 2`] = `
+<Button
+  className="button-submit-controlled mock-class"
+  diabled={false}
+  disabled={false}
+  formstate={
+    Object {
+      "formDisabled": true,
+    }
+  }
+  onClick={[Function]}
+  type="submit"
+/>
+`;
+
+exports[`ButtonSubmitControlled should render with the correct props 1`] = `
+<ButtonSubmitControlled
+  className="mock-class"
+  formState={
+    Object {
+      "formDisabled": false,
+      "getFieldError": [MockFunction],
+      "getFieldValue": [MockFunction],
+      "initialSubmit": false,
+      "setFieldValidators": [MockFunction],
+      "setFieldValue": [MockFunction],
+      "setFieldValueDebounced": [MockFunction],
+      "shouldDisable": [MockFunction],
+    }
+  }
+/>
+`;
+
+exports[`ButtonSubmitControlled should render with the correct props 2`] = `
+<Button
+  className="button-submit-controlled mock-class"
+  disabled={false}
+  onClick={[Function]}
+  type="submit"
+/>
+`;
+
+exports[`ButtonSubmitControlled should render with the correct props 3`] = `
+<Button
+  className="button-submit-controlled mock-class"
+  disabled={false}
+  onClick={[Function]}
+  type="submit"
+/>
+`;

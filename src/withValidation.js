@@ -20,7 +20,17 @@ export default function (WrappedComponent) {
         }
 
         componentDidMount() {
-            this.validateField(this.props.value);    
+            this.validateField(this.props.value);
+        }
+        UNSAFE_componentWillReceiveProps({updateValidation: prevUpdateValidation, value: prevValue}) {
+            if (this.props.updateValidation !== prevUpdateValidation) {
+                this.validateField(prevValue);
+            }
+        }
+
+        handleChange(event) {
+            this.validateFieldDebounced(event.target.value);
+            this.props.onChange(event);
         }
 
         validateField(value) {
@@ -52,13 +62,8 @@ export default function (WrappedComponent) {
             this.setState({fieldError});
         }
 
-        handleChange(event) {
-            this.validateFieldDebounced(event.target.value);
-            this.props.onChange(event);
-        }
-
         getError() {
-            return (this.props.formState.getInitialSubmit()) ? this.state.fieldError : null;
+            return (this.props.formState.initialSubmit) ? this.state.fieldError : null;
         }
 
         render() {
@@ -73,9 +78,22 @@ export default function (WrappedComponent) {
     }
 
     FormFieldValidation.propTypes = {
+        formState: PropTypes.object,
+        name: PropTypes.string,
+        onChange: PropTypes.func,
+        updateValidation: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+            PropTypes.bool]
+        ),
         validate: PropTypes.arrayOf(PropTypes.oneOfType(
             [PropTypes.string, PropTypes.func]
         )).isRequired,
+        value: PropTypes.string,
+    };
+
+    FormFieldValidation.defaultProps = {
+        onChange: () => null,
     };
 
     return FormFieldValidation;

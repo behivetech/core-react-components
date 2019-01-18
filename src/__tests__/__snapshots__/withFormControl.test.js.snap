@@ -13,13 +13,13 @@ exports[`withFormControl should pass fromState to the warapped component 1`] = `
       className="mock-class"
       formState={
         Object {
+          "formDisabled": false,
           "getFieldValue": [Function],
           "getFieldValues": [Function],
-          "getInitialSubmit": [Function],
+          "initialSubmit": false,
           "setFieldError": [Function],
           "setFieldValue": [Function],
           "setFieldValueDebounced": [Function],
-          "shouldDisable": [Function],
           "unsetFieldError": [Function],
         }
       }
