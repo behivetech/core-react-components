@@ -1,7 +1,7 @@
-import React, {Component, createRef} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {pick} from 'lodash';
+import {debounce, get, pick} from 'lodash';
 import MdcTextField, {Input} from '@material/react-text-field';
 
 // Components
@@ -14,20 +14,72 @@ import './TextField.scss';
 export default class TextField extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: this.props.value};
-        this.inputRef = createRef();
-        this.handleOnChange = this.handleOnChange.bind(this);
+        this.state = {value: this.props.value, inputRef: null};
+        this.handleChange = this.handleChange.bind(this);
+        this.initInputRef = this.initInputRef.bind(this);
+        this.addEventListeners = this.addEventListeners.bind(this);
+        this.onAnimationStart = this.onAnimationStart.bind(this);
+        this.onInput = this.onInput.bind(this);
+        this.onTransitionStart = this.onTransitionStart.bind(this);
+        this.debouncedAddEventListeners = debounce(this.addEventListeners, 300, {trailing: true});
     }
 
-    componentDidMount() {
-        console.log(this.inputRef); // Returns null
-
-        if (this.props.autoFocus) {
-            // this.inputRef.current.focus();
+    componentDidUpdate(prevProps, prevState) {
+        this.state.inputRef && setTimeout(() => console.log({inputRef: this.state.inputRef}), 5000)
+        if(this.state.value) {
+            console.log(this.state.value)
         }
     }
 
-    handleOnChange(event) {
+    componentWillUnmount() {
+        this.state.inputRef.removeEventListener('animationstart');
+    }
+
+    onAnimationStart({target, animationName}) {
+        const AUTOFILLED = 'text-field__input--is-autofilled';
+        const autoFillActions = {
+            onAutoFillStart: (element) => {
+                element.classList.add(AUTOFILLED);
+                this.setState({value: element.value});
+            },
+            onAutoFillCancel: (element) => {
+                element.classList.remove(AUTOFILLED);
+                this.setState({value: element.value});
+            },
+        };
+
+        console.log({target, animationName})
+
+        if (autoFillActions[animationName]) {
+            autoFillActions[animationName](target);
+        }
+    }
+
+    onInput(event) {
+        console.log('onInput', {event});
+    }
+
+    onTransitionStart(event) {
+        console.log('onTransitionStart', {event});
+    }
+
+    initInputRef(input) {
+        const inputElement = get(input, 'inputElement');
+
+        console.log({inputValue: get(inputElement, 'value')})
+        if (get(inputElement, 'value')) {
+            this.debouncedAddEventListeners(inputElement);
+        }
+    }
+
+    addEventListeners(inputElement) {
+        inputElement.addEventListener('animationstart', this.onAnimationStart, false);
+        inputElement.addEventListener('input', this.onInput, false);
+        inputElement.addEventListener('transitionstart', this.onTransitionStart, false);
+        this.setState({inputRef: inputElement});
+    }
+
+    handleChange(event) {
         event.stopPropagation();
         this.setState({value: event.target.value});
         this.props.onChange(event);
@@ -44,6 +96,7 @@ export default class TextField extends Component {
 
     render() {
         const {
+            autoFocus,
             disabled,
             error,
             helperText,
@@ -71,11 +124,13 @@ export default class TextField extends Component {
                     className={this.getClass()}
                 >
                     <Input
+                        autoFocus={autoFocus}
+                        className="text-field__input"
                         disabled={disabled}
                         id={id || name}
                         name={name || id}
-                        onChange={this.handleOnChange}
-                        ref={this.inputRef}
+                        onChange={this.handleChange}
+                        ref={this.initInputRef}
                         type={type}
                         value={this.state.value}
                         {...inputProps}
@@ -88,7 +143,7 @@ export default class TextField extends Component {
 }
 
 TextField.propTypes = {
-    /** Focuses on field on load if set */
+    /** Focuses on Input field on load if set */
     autoFocus: PropTypes.bool,
     /** Ability to add additional className to the component for addistional styling from parent */
     className: PropTypes.string,

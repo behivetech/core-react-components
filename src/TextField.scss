@@ -1,6 +1,27 @@
+@keyframes onAutoFillStart {from {}}
+@keyframes onAutoFillCancel {from {}}
+
 .text-field {
-	
+
 	&--full-width {
 		display: block;
 	}
+
+    &__input {
+        transition: background-color 1s, color1s, filter  1s;
+
+        &:-webkit-autofill {
+            // Expose a hook for JavaScript when autofill is shown
+            // JavaScript can capture 'animationstart' events
+            animation-duration:  1s;
+            animation-name: onAutoFillStart;
+        }
+
+        &:not(:-webkit-autofill) {
+            // Expose a hook for JS onAutoFillCancel
+            // JavaScript can capture 'animationstart' events
+            animation-duration:  1s;
+            animation-name: onautofillcancel;
+        }
+    }
 }
